@@ -6,11 +6,10 @@ using UnityEngine;
 namespace Ponta.CCK_Generator.Base
 {
 
-
     public static class ReflectionUtil
     {
 
-        public static void SetValue(System.Object obj, string propertyName, System.Object value) {
+        public static void SetValueByProperty(System.Object obj, string propertyName, System.Object value) {
 
             var type = obj.GetType();
             var flags = BindingFlags.Instance | BindingFlags.Public;
@@ -19,13 +18,18 @@ namespace Ponta.CCK_Generator.Base
             property.SetValue(obj, value);
         }
 
-        public static void SetValueByField(System.Object obj, string propertyName, string value) {
+        public static void SetValueByField(System.Object obj, string fieldName, System.Object value) {
 
             var type = obj.GetType();
             var flags = BindingFlags.NonPublic | BindingFlags.Instance;
-            var field = type.GetField(propertyName, flags);
+            var field = type.GetField(fieldName, flags);
 
             field.SetValue(type, value);
+        }
+
+        public static void PrintAll(System.Object obj) {
+            PrintFields(obj);
+            PrintProperty(obj);
         }
 
         public static void PrintFields(System.Object obj) {

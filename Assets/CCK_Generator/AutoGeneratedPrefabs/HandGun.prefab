@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 8686237320882906205}
   - component: {fileID: 6643138868357431627}
   - component: {fileID: 98906991403687493}
+  - component: {fileID: 262435907758109925}
   m_Layer: 14
   m_Name: HandGun
   m_TagString: Untagged
@@ -227,6 +228,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movableItem: {fileID: 6643138868357431627}
   grip: {fileID: 6729872946244470931}
+--- !u!114 &262435907758109925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112312058039853198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90a8458122ef47c3b840e286a75994a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 8686237320882906205}
+  triggers: []
 --- !u!1 &1705789841209806385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,15 +1317,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b89f1fd0b3c5c94db1dd8aeb708fda0, type: 3}
---- !u!1 &4724889499539770181 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7b89f1fd0b3c5c94db1dd8aeb708fda0,
-    type: 3}
-  m_PrefabInstance: {fileID: 5571872097124726292}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5393620599354085887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7b89f1fd0b3c5c94db1dd8aeb708fda0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5571872097124726292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4724889499539770181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7b89f1fd0b3c5c94db1dd8aeb708fda0,
     type: 3}
   m_PrefabInstance: {fileID: 5571872097124726292}
   m_PrefabAsset: {fileID: 0}

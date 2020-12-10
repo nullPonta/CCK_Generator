@@ -1,7 +1,12 @@
-﻿using ClusterVR.CreatorKit.Item.Implements;
+﻿using ClusterVR.CreatorKit;
+using ClusterVR.CreatorKit.Item.Implements;
+using ClusterVR.CreatorKit.Trigger.Implements;
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+
+using TriggerTarget = ClusterVR.CreatorKit.Trigger.TriggerTarget;
 
 
 namespace Ponta.CCK_Generator.Base
@@ -53,7 +58,7 @@ namespace Ponta.CCK_Generator.Base
             if (itemInfo.isItem) {
                 var item = gameObject.AddComponent<Item>();
 
-                SerializedObjectUtil.SetValue(item, "itemName", itemInfo.itemName);
+                SerializedObjectUtil.SetStringValue(item, "itemName", itemInfo.itemName);
             }
 
             if (itemInfo.isMovableItem) {
@@ -70,6 +75,23 @@ namespace Ponta.CCK_Generator.Base
 
             }
 
+        }
+
+        public void AddTrigger() {
+
+            var onCreateItemTrigger = gameObject.AddComponent<OnCreateItemTrigger>();
+
+            var triggers = new List<TriggerParam>();
+
+            //var bulletCount = new Value();
+            //ReflectionUtil.PrintAll(bulletCount);
+            //SerializedObjectUtil.SetValue(bulletCount, "integerValue", 6);
+
+            var bullets = new TriggerParam(TriggerTarget.Item, null, "bullets", ParameterType.Integer, new Value());
+            triggers.Add(bullets);
+
+            ReflectionUtil.PrintAll(onCreateItemTrigger);
+            SerializedObjectUtil.SetValue(onCreateItemTrigger, "triggers", triggers.ToArray());
         }
 
         GameObject LoadPrototypePrefab() {
