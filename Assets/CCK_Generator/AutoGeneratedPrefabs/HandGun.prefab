@@ -241,7 +241,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 8686237320882906205}
-  triggers: []
+  triggers:
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: bullets
+    type: 3
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 6
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: maxBullets
+    type: 3
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 6
 --- !u!1 &1705789841209806385
 GameObject:
   m_ObjectHideFlags: 0

@@ -82,16 +82,13 @@ namespace Ponta.CCK_Generator.Base
             var onCreateItemTrigger = gameObject.AddComponent<OnCreateItemTrigger>();
 
             var triggers = new List<TriggerParam>();
-
-            //var bulletCount = new Value();
-            //ReflectionUtil.PrintAll(bulletCount);
-            //SerializedObjectUtil.SetValue(bulletCount, "integerValue", 6);
-
             var bullets = new TriggerParam(TriggerTarget.Item, null, "bullets", ParameterType.Integer, new Value());
             triggers.Add(bullets);
 
-            ReflectionUtil.PrintAll(onCreateItemTrigger);
-            SerializedObjectUtil.SetValue(onCreateItemTrigger, "triggers", triggers.ToArray());
+            var maxBullets = new TriggerParam(TriggerTarget.Item, null, "maxBullets", ParameterType.Integer, new Value());
+            triggers.Add(maxBullets);
+
+            SerializedObjectUtil.SetTriggerValue(onCreateItemTrigger, "triggers", triggers.ToArray());
         }
 
         GameObject LoadPrototypePrefab() {

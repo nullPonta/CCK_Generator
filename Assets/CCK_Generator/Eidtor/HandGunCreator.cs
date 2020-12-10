@@ -7,7 +7,7 @@ namespace Ponta.CCK_Generator
 
     public static class HandGunCreator
     {
-        [MenuItem("CCK_Generator/Create/New HandGun")]
+        [MenuItem("CCK_Generator/Create/HandGun")]
         public static void CreateHandGunPrefab() {
 
             GameObjectCreator gameObjectCreator = new GameObjectCreator();
