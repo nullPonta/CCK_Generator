@@ -1,7 +1,6 @@
-﻿using ClusterVR.CreatorKit.Item.Implements;
+﻿
 
-
-namespace Ponta.CCK_Generator
+namespace Ponta.CCK_Generator.Base
 {
 
     public class ItemInfo

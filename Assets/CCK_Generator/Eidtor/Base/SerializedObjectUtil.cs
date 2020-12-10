@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace Ponta.CCK_Generator
+namespace Ponta.CCK_Generator.Base
 {
 
     public static class SerializedObjectUtil

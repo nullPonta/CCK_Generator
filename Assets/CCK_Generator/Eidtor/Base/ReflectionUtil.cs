@@ -3,7 +3,7 @@ using System.Reflection;
 using UnityEngine;
 
 
-namespace Ponta.CCK_Generator
+namespace Ponta.CCK_Generator.Base
 {
 
 
