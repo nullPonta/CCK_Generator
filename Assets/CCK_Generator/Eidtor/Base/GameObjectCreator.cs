@@ -1,5 +1,4 @@
-﻿using ClusterVR.CreatorKit.Item.Implements;
-using System;
+﻿using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -52,30 +51,7 @@ namespace Ponta.CCK_Generator.Base
         }
 
         public void AddItem(ItemInfo itemInfo) {
-
-            /* Item */
-            if (itemInfo.isItem) {
-                var item = gameObject.AddComponent<Item>();
-
-                SerializedObjectUtil.SetStringValue(item, "itemName", itemInfo.itemName);
-            }
-
-            /* MovableItem */
-            if (itemInfo.isMovableItem) {
-                var movableItem = gameObject.AddComponent<MovableItem>();
-            }
-
-            /* GrabbableItem */
-            if (itemInfo.isGrabbableItem) {
-                var grabbableItem = gameObject.AddComponent<GrabbableItem>();
-
-                var grip = gameObject.transform.Find("Grip");
-                if (grip != null) {
-                    SerializedObjectUtil.SetValue(grabbableItem, "grip", grip);
-                }
-
-            }
-
+            itemInfo.AddItem(gameObject);
         }
 
         public void AddTrigger(TriggerInfo triggerInfo) {
