@@ -71,8 +71,19 @@ namespace Ponta.CCK_Generator.Base
             serializedObject.ApplyModifiedProperties();
         }
 
-        public static void SetLogicValue(Object obj, string propertyName) {
+        public static void SetLogicValue(Object obj, string propertyName, LogicParam logicParam) {
             var serializedObject = CreateSerializedObject(obj);
+
+            /* key */
+            var keyType = serializedObject.FindProperty("key");
+
+            var target = keyType.FindPropertyRelative("target");
+            target.enumValueIndex = (int)logicParam.GimmickKey.Target;
+
+            var key = keyType.FindPropertyRelative("key");
+            key.stringValue = logicParam.GimmickKey.Key;
+
+            /* logc */
             var prop = serializedObject.FindProperty(propertyName);
 
             for (int cnt_i = 0; cnt_i < prop.arraySize; cnt_i++) {

@@ -114,13 +114,5 @@ namespace Ponta.CCK_Generator.Base
 
     }
 
-
-    public class Value
-    {
-        public bool BoolValue;
-        public float FloatValue;
-        public int IntegerValue;
-    }
-
 }
 
