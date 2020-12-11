@@ -1,4 +1,5 @@
-﻿using ClusterVR.CreatorKit.Trigger.Implements;
+﻿using ClusterVR.CreatorKit;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,7 +11,6 @@ namespace Ponta.CCK_Generator.Base
     {
 
         public static void SetStringValue(Object obj, string propertyName, string value) {
-
             var serializedObject = CreateSerializedObject(obj);
             var prop = serializedObject.FindProperty(propertyName);
 
@@ -18,11 +18,11 @@ namespace Ponta.CCK_Generator.Base
             serializedObject.ApplyModifiedProperties();
         }
 
-        public static void SetTriggerValue(Object obj, string propertyName, TriggerParam[] triggerList) {
+        public static void SetTriggerValue(Object obj, string propertyName, List<TriggerParam> triggerList) {
             var serializedObject = CreateSerializedObject(obj);
             var prop = serializedObject.FindProperty(propertyName);
 
-            prop.arraySize = triggerList.Length;
+            prop.arraySize = triggerList.Count;
 
             for (int cnt_i = 0; cnt_i < prop.arraySize; cnt_i++ ) {
                 var elementprop = prop.GetArrayElementAtIndex(cnt_i);
@@ -32,15 +32,23 @@ namespace Ponta.CCK_Generator.Base
                 var type = elementprop.FindPropertyRelative("type");
                 var typeValue = elementprop.FindPropertyRelative("value");
 
-                target.enumValueIndex = (int)triggerList[cnt_i].Target;
-                if (triggerList[cnt_i].Target == ClusterVR.CreatorKit.Trigger.TriggerTarget.SpecifiedItem) {
-                    specifiedTargetItem.managedReferenceValue = triggerList[cnt_i].SpecifiedTargetItem;
-                }
-                key.stringValue = triggerList[cnt_i].Key;
-                type.enumValueIndex = (int)triggerList[cnt_i].Type;
+                var inputTrigger = triggerList[cnt_i];
 
-                var intValue =  typeValue.FindPropertyRelative("integerValue");
-                intValue.intValue = 6;
+                target.enumValueIndex = (int)inputTrigger.Target;
+
+                if (inputTrigger.Target == ClusterVR.CreatorKit.Trigger.TriggerTarget.SpecifiedItem) {
+                    specifiedTargetItem.managedReferenceValue = inputTrigger.SpecifiedTargetItem;
+                }
+                
+                key.stringValue = inputTrigger.Key;
+                type.enumValueIndex = (int)inputTrigger.Type;
+
+                /*  */
+                if (inputTrigger.Type == ParameterType.Integer) {
+                    var intValue = typeValue.FindPropertyRelative("integerValue");
+                    intValue.intValue = inputTrigger.RawValue.IntegerValue;
+                }
+
             }
 
             serializedObject.ApplyModifiedProperties();

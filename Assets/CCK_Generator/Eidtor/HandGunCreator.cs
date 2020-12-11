@@ -1,5 +1,9 @@
-﻿using Ponta.CCK_Generator.Base;
+﻿using ClusterVR.CreatorKit;
+using ClusterVR.CreatorKit.Trigger.Implements;
+using Ponta.CCK_Generator.Base;
 using UnityEditor;
+
+using TriggerTarget = ClusterVR.CreatorKit.Trigger.TriggerTarget;
 
 
 namespace Ponta.CCK_Generator
@@ -17,7 +21,7 @@ namespace Ponta.CCK_Generator
             if (!result) { return; }
 
             gameObjectCreator.AddItem(handGunDefinition.itemInfo);
-            gameObjectCreator.AddTrigger();
+            gameObjectCreator.AddTrigger(handGunDefinition.triggerInfo);
             gameObjectCreator.SaveAsPrefabAsset();
         }
 
@@ -26,6 +30,8 @@ namespace Ponta.CCK_Generator
     public class HandGunDefinition : BaseDefinition
     {
         public ItemInfo itemInfo = new ItemInfo();
+
+        public TriggerInfo triggerInfo = new TriggerInfo();
 
 
         public HandGunDefinition() {
@@ -42,6 +48,12 @@ namespace Ponta.CCK_Generator
             itemInfo.isGrabbableItem = true;
 
             /* Define */
+            var bullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "bullets", 6);
+            triggerInfo.AddOnCreateItemTrigger(bullets);
+
+            var maxBullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "maxBullets", 6);
+            triggerInfo.AddOnCreateItemTrigger(maxBullets);
+
 
 
 

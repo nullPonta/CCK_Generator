@@ -1,12 +1,8 @@
-﻿using ClusterVR.CreatorKit;
-using ClusterVR.CreatorKit.Item.Implements;
+﻿using ClusterVR.CreatorKit.Item.Implements;
 using ClusterVR.CreatorKit.Trigger.Implements;
 using System;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
-using TriggerTarget = ClusterVR.CreatorKit.Trigger.TriggerTarget;
 
 
 namespace Ponta.CCK_Generator.Base
@@ -55,16 +51,19 @@ namespace Ponta.CCK_Generator.Base
 
         public void AddItem(ItemInfo itemInfo) {
 
+            /* Item */
             if (itemInfo.isItem) {
                 var item = gameObject.AddComponent<Item>();
 
                 SerializedObjectUtil.SetStringValue(item, "itemName", itemInfo.itemName);
             }
 
+            /* MovableItem */
             if (itemInfo.isMovableItem) {
                 var movableItem = gameObject.AddComponent<MovableItem>();
             }
 
+            /* GrabbableItem */
             if (itemInfo.isGrabbableItem) {
                 var grabbableItem = gameObject.AddComponent<GrabbableItem>();
 
@@ -77,22 +76,19 @@ namespace Ponta.CCK_Generator.Base
 
         }
 
-        public void AddTrigger() {
+        public void AddTrigger(TriggerInfo triggerInfo) {
 
-            var onCreateItemTrigger = gameObject.AddComponent<OnCreateItemTrigger>();
+            /* OnCreateItemTrigger */
+            if (triggerInfo.onCreateItemTriggerParamList != null) {
+                var onCreateItemTrigger = gameObject.AddComponent<OnCreateItemTrigger>();
+                SerializedObjectUtil.SetTriggerValue(onCreateItemTrigger, "triggers", triggerInfo.onCreateItemTriggerParamList);
+            }
 
-            var triggers = new List<TriggerParam>();
-            var bullets = new TriggerParam(TriggerTarget.Item, null, "bullets", ParameterType.Integer, new Value());
-            triggers.Add(bullets);
-
-            var maxBullets = new TriggerParam(TriggerTarget.Item, null, "maxBullets", ParameterType.Integer, new Value());
-            triggers.Add(maxBullets);
-
-            SerializedObjectUtil.SetTriggerValue(onCreateItemTrigger, "triggers", triggers.ToArray());
         }
 
         GameObject LoadPrototypePrefab() {
 
+            /* Check file name */
             string fileName = System.IO.Path.GetFileName(definition.GetPrototypePath());
 
             if (!fileName.StartsWith("Prototype_")) {
@@ -100,12 +96,13 @@ namespace Ponta.CCK_Generator.Base
                 return null;
             }
 
+            /* Load */
             try {
                 gameObject = PrefabUtility.LoadPrefabContents(definition.GetPrototypePath());
                 return gameObject;
             }
             catch (Exception e) {
-                Debug.LogError("LoadPrefabContents failed ! : " + definition.GetPrototypePath());
+                Debug.LogError("LoadPrefabContents failed ! : " + definition.GetPrototypePath() + " : " + e.Message);
                 return null;
             }
         }
