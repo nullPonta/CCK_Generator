@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 4684199509145720010}
   - component: {fileID: 2140997772032251261}
   - component: {fileID: 3309780019026336173}
+  - component: {fileID: 5152900835292425479}
   m_Layer: 14
   m_Name: HandGun
   m_TagString: Untagged
@@ -336,6 +337,24 @@ MonoBehaviour:
       floatValue: 0
       integerValue: 0
   upTriggers: []
+--- !u!114 &5152900835292425479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112312058039853198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06d8dc2ce9e442ab2712de694945b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 8686237320882906205}
+  key:
+    target: 0
+    key: 
+  logic:
+    statements: []
 --- !u!1 &1705789841209806385
 GameObject:
   m_ObjectHideFlags: 0

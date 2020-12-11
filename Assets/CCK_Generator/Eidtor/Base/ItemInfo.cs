@@ -35,7 +35,7 @@ namespace Ponta.CCK_Generator.Base
 
                 var grip = gameObject.transform.Find("Grip");
                 if (grip != null) {
-                    SerializedObjectUtil.SetValue(grabbableItem, "grip", grip);
+                    SerializedObjectUtil.SetTransformValue(grabbableItem, "grip", grip);
                 }
 
             }

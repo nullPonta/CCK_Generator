@@ -72,7 +72,7 @@ namespace Ponta.CCK_Generator.Base
                 return null;
             }
 
-            /* Load */
+            /* Load prefab */
             try {
                 gameObject = PrefabUtility.LoadPrefabContents(definition.GetPrototypePath());
                 return gameObject;

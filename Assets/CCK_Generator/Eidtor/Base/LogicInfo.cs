@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TriggerTarget = ClusterVR.CreatorKit.Trigger.TriggerTarget;
 
 namespace Ponta.CCK_Generator.Base
 {
@@ -14,8 +14,10 @@ namespace Ponta.CCK_Generator.Base
 
             var itemLogic = gameObject.AddComponent<ItemLogic>();
 
-            ReflectionUtil.PrintAll(itemLogic);
-            SerializedObjectUtil.SetStringValue(itemLogic, "itemName", "");
+            //
+            //SerializedObjectUtil.SetEnumValue(itemLogic, "item", (int)TriggerTarget.Item);
+            //SerializedObjectUtil.SetStringValue(itemLogic, "key", "TEST");
+            SerializedObjectUtil.SetLogicValue(itemLogic, "logic");
         }
 
     }
