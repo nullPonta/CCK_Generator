@@ -14,6 +14,7 @@ namespace Ponta.CCK_Generator.Base
         List<TriggerParam> OnCreateItemTriggerParamList;
 
         List<TriggerParam> OnGrabItemTriggerParamList;
+        List<TriggerParam> OnReleaseItemTriggerParamList;
 
         List<TriggerParam> UseItemTriggerParamList_Down;
         List<TriggerParam> UseItemTriggerParamList_Up;
@@ -25,6 +26,10 @@ namespace Ponta.CCK_Generator.Base
 
         public void AddOnGrabItemTrigger(TriggerParam triggerParam) {
             AddTriggerParamToList(triggerParam, ref OnGrabItemTriggerParamList);
+        }
+
+        public void AddOnReleaseItemTrigger(TriggerParam triggerParam) {
+            AddTriggerParamToList(triggerParam, ref OnReleaseItemTriggerParamList);
         }
 
         public void AddUseItemTrigger_Down(TriggerParam triggerParam) {
@@ -45,8 +50,14 @@ namespace Ponta.CCK_Generator.Base
 
             /* OnGrabItemTrigger */
             if (OnGrabItemTriggerParamList != null) {
-                var onCreateItemTrigger = gameObject.AddComponent<OnGrabItemTrigger>();
-                SerializedObjectUtil.SetTriggerValue(onCreateItemTrigger, "triggers", OnGrabItemTriggerParamList);
+                var onGrabItemTrigger = gameObject.AddComponent<OnGrabItemTrigger>();
+                SerializedObjectUtil.SetTriggerValue(onGrabItemTrigger, "triggers", OnGrabItemTriggerParamList);
+            }
+
+            /* OnReleaseItemTrigger */
+            if (OnReleaseItemTriggerParamList != null) {
+                var onReleaseItemTrigger = gameObject.AddComponent<OnReleaseItemTrigger>();
+                SerializedObjectUtil.SetTriggerValue(onReleaseItemTrigger, "triggers", OnReleaseItemTriggerParamList);
             }
 
             /* UseItemTrigger */
