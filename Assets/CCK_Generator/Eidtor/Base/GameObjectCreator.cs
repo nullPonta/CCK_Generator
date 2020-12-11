@@ -1,5 +1,4 @@
 ﻿using ClusterVR.CreatorKit.Item.Implements;
-using ClusterVR.CreatorKit.Trigger.Implements;
 using System;
 using UnityEditor;
 using UnityEngine;
@@ -17,6 +16,7 @@ namespace Ponta.CCK_Generator.Base
 
             this.definition = definition;
 
+            /* GameObject */
             if (definition.GetPrototypePath() != null) {
 
                 /* Load prototype prefab */
@@ -27,13 +27,14 @@ namespace Ponta.CCK_Generator.Base
                 /* Create new gameObject */
                 const string name = "target";
                 gameObject = EditorUtility.CreateGameObjectWithHideFlags(name, HideFlags.HideInHierarchy);
-
             }
 
             return true;
         }
 
         public void SaveAsPrefabAsset() {
+
+            /* Save prefab */
             bool success;
             PrefabUtility.SaveAsPrefabAsset(gameObject, definition.GetOutputPath(), out success);
 
@@ -41,6 +42,7 @@ namespace Ponta.CCK_Generator.Base
                 Debug.LogError("SaveAsPrefabAsset failed ! : " + definition.GetOutputPath());
             }
 
+            /* Clean up gameObject */
             if (definition.GetPrototypePath() != null) {
                 PrefabUtility.UnloadPrefabContents(gameObject);
             }
@@ -77,13 +79,7 @@ namespace Ponta.CCK_Generator.Base
         }
 
         public void AddTrigger(TriggerInfo triggerInfo) {
-
-            /* OnCreateItemTrigger */
-            if (triggerInfo.onCreateItemTriggerParamList != null) {
-                var onCreateItemTrigger = gameObject.AddComponent<OnCreateItemTrigger>();
-                SerializedObjectUtil.SetTriggerValue(onCreateItemTrigger, "triggers", triggerInfo.onCreateItemTriggerParamList);
-            }
-
+            triggerInfo.AddTrigger(gameObject);
         }
 
         GameObject LoadPrototypePrefab() {

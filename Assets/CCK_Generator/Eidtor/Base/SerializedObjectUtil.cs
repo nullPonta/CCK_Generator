@@ -43,7 +43,7 @@ namespace Ponta.CCK_Generator.Base
                 key.stringValue = inputTrigger.Key;
                 type.enumValueIndex = (int)inputTrigger.Type;
 
-                /*  */
+                /* Set value */
                 if (inputTrigger.Type == ParameterType.Integer) {
                     var intValue = typeValue.FindPropertyRelative("integerValue");
                     intValue.intValue = inputTrigger.RawValue.IntegerValue;
