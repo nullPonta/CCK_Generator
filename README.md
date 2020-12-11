@@ -1,26 +1,8 @@
-# Cluster Creator Kit テンプレートプロジェクト
+# CCK Generator
 
-[cluster](https://cluster.mu/) にゲームワールドを制作する際のテンプレートとなる Unity プロジェクトです。
+[cluster](https://cluster.mu/)のCluster Creator Kitをコードから生成します。
 
-## 要件
-
-### Unity 2019.4.11f1
-
-環境に応じて以下の追加モジュールが必要です。
-
-#### Windows の場合 
-- Android Build Support
-- iOS Build Support
-- Mac Build Support (Mono)
-
-#### macOS の場合
-- Android Build Support
-- iOS Build Support
-- Windows Build Support (Mono)
-
-### Cluster Creator Kit v1.10.0 以上
-プロジェクトに自動で導入されます。
-起動時にエラーが出る場合や Unity のメニューに「Cluster」の項目が追加されていない場合は [Creator Kitの導入](https://clustervr.gitbook.io/creatorkit/installation/install-creatorkit) を参考に Creator Kit の手動での導入をお試しください。
+ゲームワールド制テンプレートを元にした Unity プロジェクトです。
 
 ## テンプレートの一覧
 
