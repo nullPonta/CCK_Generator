@@ -13,12 +13,18 @@ namespace Ponta.CCK_Generator.Base
     {
         List<TriggerParam> OnCreateItemTriggerParamList;
 
+        List<TriggerParam> OnGrabItemTriggerParamList;
+
         List<TriggerParam> UseItemTriggerParamList_Down;
         List<TriggerParam> UseItemTriggerParamList_Up;
 
 
         public void AddOnCreateItemTrigger(TriggerParam triggerParam) {
             AddTriggerParamToList(triggerParam, ref OnCreateItemTriggerParamList);
+        }
+
+        public void AddOnGrabItemTrigger(TriggerParam triggerParam) {
+            AddTriggerParamToList(triggerParam, ref OnGrabItemTriggerParamList);
         }
 
         public void AddUseItemTrigger_Down(TriggerParam triggerParam) {
@@ -37,22 +43,44 @@ namespace Ponta.CCK_Generator.Base
                 SerializedObjectUtil.SetTriggerValue(onCreateItemTrigger, "triggers", OnCreateItemTriggerParamList);
             }
 
+            /* OnGrabItemTrigger */
+            if (OnGrabItemTriggerParamList != null) {
+                var onCreateItemTrigger = gameObject.AddComponent<OnGrabItemTrigger>();
+                SerializedObjectUtil.SetTriggerValue(onCreateItemTrigger, "triggers", OnGrabItemTriggerParamList);
+            }
+
             /* UseItemTrigger */
             if ((UseItemTriggerParamList_Down != null) ||
                 (UseItemTriggerParamList_Up != null) ){
 
-                var onCreateItemTrigger = gameObject.AddComponent<UseItemTrigger>();
+                var useItemTrigger = gameObject.AddComponent<UseItemTrigger>();
 
                 if (UseItemTriggerParamList_Down != null) {
-                    SerializedObjectUtil.SetTriggerValue(onCreateItemTrigger, "downTriggers", UseItemTriggerParamList_Down);
+                    SerializedObjectUtil.SetTriggerValue(useItemTrigger, "downTriggers", UseItemTriggerParamList_Down);
                 }
 
                 if (UseItemTriggerParamList_Up != null) {
-                    SerializedObjectUtil.SetTriggerValue(onCreateItemTrigger, "upTriggers", UseItemTriggerParamList_Up);
+                    SerializedObjectUtil.SetTriggerValue(useItemTrigger, "upTriggers", UseItemTriggerParamList_Up);
                 }
             }
 
 
+        }
+
+        public TriggerParam CreateTriggerParamSignal(TriggerTarget target, Item specifiedTargetItem, string key) {
+            var value = new Value();
+            var param = new TriggerParam(TriggerTarget.Item, null, key, ParameterType.Signal, value);
+
+            return param;
+        }
+
+        public TriggerParam CreateTriggerParamBool(TriggerTarget target, Item specifiedTargetItem, string key, bool boolValue) {
+            var value = new Value();
+            value.BoolValue = boolValue;
+
+            var param = new TriggerParam(TriggerTarget.Item, null, key, ParameterType.Bool, value);
+
+            return param;
         }
 
         public TriggerParam CreateTriggerParamInteger(TriggerTarget target, Item specifiedTargetItem, string key, int intValue) {
@@ -60,13 +88,6 @@ namespace Ponta.CCK_Generator.Base
             value.IntegerValue = intValue;
 
             var param = new TriggerParam(TriggerTarget.Item, null, key, ParameterType.Integer, value);
-
-            return param;
-        }
-
-        public TriggerParam CreateTriggerParamSignal(TriggerTarget target, Item specifiedTargetItem, string key) {
-            var value = new Value();
-            var param = new TriggerParam(TriggerTarget.Item, null, key, ParameterType.Signal, value);
 
             return param;
         }

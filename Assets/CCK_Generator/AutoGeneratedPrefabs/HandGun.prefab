@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 6643138868357431627}
   - component: {fileID: 98906991403687493}
   - component: {fileID: 5090929665129750338}
+  - component: {fileID: 4684199509145720010}
   - component: {fileID: 3309780019026336173}
   m_Layer: 14
   m_Name: HandGun
@@ -259,6 +260,36 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 6
+--- !u!114 &4684199509145720010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112312058039853198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaad96d2e18f43efbdaeaf6edf336ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbableItem: {fileID: 98906991403687493}
+  triggers:
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: enableUI
+    type: 1
+    value:
+      boolValue: 1
+      floatValue: 0
+      integerValue: 0
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: Reloaded
+    type: 0
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 0
 --- !u!114 &3309780019026336173
 MonoBehaviour:
   m_ObjectHideFlags: 0

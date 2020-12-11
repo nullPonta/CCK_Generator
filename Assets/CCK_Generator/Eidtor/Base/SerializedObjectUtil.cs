@@ -24,7 +24,7 @@ namespace Ponta.CCK_Generator.Base
 
             prop.arraySize = triggerList.Count;
 
-            for (int cnt_i = 0; cnt_i < prop.arraySize; cnt_i++ ) {
+            for (int cnt_i = 0; cnt_i < prop.arraySize; cnt_i++) {
                 var elementprop = prop.GetArrayElementAtIndex(cnt_i);
                 var target = elementprop.FindPropertyRelative("target");
                 var specifiedTargetItem = elementprop.FindPropertyRelative("specifiedTargetItem");
@@ -39,12 +39,16 @@ namespace Ponta.CCK_Generator.Base
                 if (inputTrigger.Target == ClusterVR.CreatorKit.Trigger.TriggerTarget.SpecifiedItem) {
                     specifiedTargetItem.managedReferenceValue = inputTrigger.SpecifiedTargetItem;
                 }
-                
+
                 key.stringValue = inputTrigger.Key;
                 type.enumValueIndex = (int)inputTrigger.Type;
 
                 /* Set value */
-                if (inputTrigger.Type == ParameterType.Integer) {
+                if (inputTrigger.Type == ParameterType.Bool) {
+                    var boolValue = typeValue.FindPropertyRelative("boolValue");
+                    boolValue.boolValue = inputTrigger.RawValue.BoolValue;
+                }
+                else if (inputTrigger.Type == ParameterType.Integer) {
                     var intValue = typeValue.FindPropertyRelative("integerValue");
                     intValue.intValue = inputTrigger.RawValue.IntegerValue;
                 }

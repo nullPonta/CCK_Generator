@@ -49,10 +49,17 @@ namespace Ponta.CCK_Generator
 
             /* Define OnCreateItemTrigger */
             var bullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "bullets", 6);
-            triggerInfo.AddOnCreateItemTrigger(bullets);
-
             var maxBullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "maxBullets", 6);
+
+            triggerInfo.AddOnCreateItemTrigger(bullets);
             triggerInfo.AddOnCreateItemTrigger(maxBullets);
+
+            /* Define OnGrabItemTrigger */
+            var enableUI = triggerInfo.CreateTriggerParamBool(TriggerTarget.Item, null, "enableUI", true);
+            var reloaded = triggerInfo.CreateTriggerParamSignal(TriggerTarget.Item, null, "Reloaded");
+
+            triggerInfo.AddOnGrabItemTrigger(enableUI);
+            triggerInfo.AddOnGrabItemTrigger(reloaded);
 
             /* Define UseItemTrigger */
             var shootUnlessReloading = triggerInfo.CreateTriggerParamSignal(TriggerTarget.Item, null, "ShootUnlessReloading");
