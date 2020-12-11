@@ -14,6 +14,7 @@ namespace Ponta.CCK_Generator.Base
         public ParameterType Type;
         public Value RawValue;
 
+
         public TriggerParam(TriggerTarget target, Item specifiedTargetItem, string key, ParameterType type, Value value) {
             Target = target;
             SpecifiedTargetItem = specifiedTargetItem;

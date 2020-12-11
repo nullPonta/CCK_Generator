@@ -58,6 +58,10 @@ namespace Ponta.CCK_Generator.Base
             triggerInfo.AddTrigger(gameObject);
         }
 
+        public void AddLogic(LogicInfo logicInfo) {
+            logicInfo.AddLogic(gameObject);
+        }
+
         GameObject LoadPrototypePrefab() {
 
             /* Check file name */
