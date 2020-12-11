@@ -1414,6 +1414,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5152900835292425479, guid: 55b158f9c8b1aa14a998aa03f916f6d7,
+        type: 3}
+      propertyPath: logic.statements.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152900835292425479, guid: 55b158f9c8b1aa14a998aa03f916f6d7,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.operatorExpression.operands.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152900835292425479, guid: 55b158f9c8b1aa14a998aa03f916f6d7,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152900835292425479, guid: 55b158f9c8b1aa14a998aa03f916f6d7,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.operatorExpression.operands.Array.data[0].value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152900835292425479, guid: 55b158f9c8b1aa14a998aa03f916f6d7,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.targetState.key
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152900835292425479, guid: 55b158f9c8b1aa14a998aa03f916f6d7,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152900835292425479, guid: 55b158f9c8b1aa14a998aa03f916f6d7,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.operatorExpression.operands.Array.data[0].value.sourceState.key
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55b158f9c8b1aa14a998aa03f916f6d7, type: 3}
 --- !u!4 &408816364 stripped
@@ -12222,6 +12257,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1508660445}
     m_Modifications:
+    - target: {fileID: 4316041622239371433, guid: 2288452e19a93b14f92e3e5fed2ad645,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.targetState.parameterType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4316041622239371443, guid: 2288452e19a93b14f92e3e5fed2ad645,
         type: 3}
       propertyPath: m_LocalPosition.x

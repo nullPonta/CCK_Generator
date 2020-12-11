@@ -17,15 +17,30 @@ namespace Ponta.CCK_Generator.Base
 
             var itemLogic = gameObject.AddComponent<ItemLogic>();
 
-            /* GimmickKey */
+            /* On receive key : GimmickKey */
             var gimmickKey = new GimmickKey(GimmickTarget.Item, "ShootUnlessReloading");
 
             /* TargetState */
             var targetState = new TargetState(TargetStateTarget.Item, "ShootOrReload", ParameterType.Signal);
 
             /* Expression */
-            var value = new Value();
-            var operatorExpression = new OperatorExpression();
+            var value = new ExpressionValue(ValueType.Constant, new ConstantValue(false), new SourceState(GimmickTarget.Item, null));
+
+            OperatorExpression operatorExpression;
+
+            {
+                var operands = new List<Expression>();
+
+                var valueB = new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(GimmickTarget.Item, "reloading"));
+                var operatorExpressionB = new OperatorExpression(Operator.Not, null);
+
+                var operand = new Expression(ExpressionType.Value, valueB, operatorExpressionB);
+
+                operands.Add(operand);
+
+                operatorExpression = new OperatorExpression(Operator.Not, operands);
+            }
+
             var expression = new Expression(ExpressionType.OperatorExpression, value, operatorExpression);
 
             /* Logic */
@@ -87,31 +102,77 @@ namespace Ponta.CCK_Generator.Base
     public class Expression
     {
         public ExpressionType Type;
-        public Value Value;
+        public ExpressionValue Value;
         public OperatorExpression OperatorExpression;
 
-        public Expression(ExpressionType type, Value value, OperatorExpression operatorExpression) {
+        public Expression(ExpressionType type, ExpressionValue value, OperatorExpression operatorExpression) {
             Type = type;
             Value = value;
             OperatorExpression = operatorExpression;
         }
     }
 
-    public class Value
+    public class ExpressionValue
     {
-        public bool BoolValue;
-        public float FloatValue;
-        public int IntegerValue;
+        public ValueType Type;
+        public ConstantValue Constant;
+        public SourceState SourceState;
+
+        public ExpressionValue(ValueType type, ConstantValue constant, SourceState sourceState) {
+            Type = type;
+            Constant = constant;
+            SourceState = sourceState;
+        }
     }
 
     public class OperatorExpression
     {
-        public OperatorExpression() {
-
+        public OperatorExpression(Operator inOperator, List<Expression> inOperands) {
+            Operator = inOperator;
+            Operands = inOperands;
         }
 
         public Operator Operator;
-        public Expression[] Operands;
+        public List<Expression> Operands;
+    }
+
+    public class ConstantValue
+    {
+        public ParameterType Type = ParameterType.Bool;
+        public bool BoolValue;
+        public float FloatValue;
+        public int IntegerValue;
+
+        public ConstantValue() {
+            Type = ParameterType.Signal;
+        }
+
+        public ConstantValue(bool boolValue) {
+            Type = ParameterType.Bool;
+            BoolValue = boolValue;
+        }
+
+        public ConstantValue(float floatValue) {
+            Type = ParameterType.Float;
+            FloatValue = floatValue;
+        }
+
+        public ConstantValue(int integerValue) {
+            Type = ParameterType.Bool;
+            IntegerValue = integerValue;
+        }
+
+    }
+
+    public class SourceState
+    {
+        public GimmickTarget Target;
+        public string Key;
+
+        public SourceState(GimmickTarget target, string key) {
+            Target = target;
+            Key = key;
+        }
     }
 
 }

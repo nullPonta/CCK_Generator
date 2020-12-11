@@ -354,7 +354,41 @@ MonoBehaviour:
     target: 0
     key: ShootUnlessReloading
   logic:
-    statements: []
+    statements:
+    - singleStatement:
+        targetState:
+          target: 0
+          key: ShootOrReload
+          parameterType: 0
+        expression:
+          type: 1
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 0
+            operands:
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 0
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: reloading
+              operatorExpression:
+                operator: 0
+                operands: []
 --- !u!1 &1705789841209806385
 GameObject:
   m_ObjectHideFlags: 0

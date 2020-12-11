@@ -85,15 +85,56 @@ namespace Ponta.CCK_Generator.Base
 
             /* logc */
             var prop = serializedObject.FindProperty(propertyName);
+            var statements = prop.FindPropertyRelative("statements");
 
-            for (int cnt_i = 0; cnt_i < prop.arraySize; cnt_i++) {
-                
+            statements.arraySize = logicParam.Logic.Statements.Count;
 
+            for (int cnt_i = 0; cnt_i < statements.arraySize; cnt_i++) {
+                var statement = statements.GetArrayElementAtIndex(cnt_i);
+                var singleStatement = statement.FindPropertyRelative("singleStatement");
+
+                var inSingleStatement = logicParam.Logic.Statements[cnt_i].SingleStatement;
+
+                /* targetState */
+                var targetState = singleStatement.FindPropertyRelative("targetState");
+                targetState.FindPropertyRelative("target").enumValueIndex = (int)inSingleStatement.TargetState.Target;
+                targetState.FindPropertyRelative("key").stringValue = inSingleStatement.TargetState.Key;
+                targetState.FindPropertyRelative("parameterType").enumValueIndex = (int)inSingleStatement.TargetState.ParameterType;
+
+                /* expression */
+                var expression = singleStatement.FindPropertyRelative("expression");
+
+                SetExpression(inSingleStatement.Expression, expression);
             }
 
-            PrintAll(obj);
-
             serializedObject.ApplyModifiedProperties();
+        }
+
+        static void SetExpression(Expression fromExpression, SerializedProperty toExpression) {
+
+            toExpression.FindPropertyRelative("type").enumValueIndex = (int)fromExpression.Type;
+
+            var value = toExpression.FindPropertyRelative("value");
+            value.FindPropertyRelative("type").enumValueIndex = (int)fromExpression.Value.Type;
+            value.FindPropertyRelative("constant.type").enumValueIndex = (int)fromExpression.Value.Constant.Type;
+            value.FindPropertyRelative("constant.boolValue").boolValue = fromExpression.Value.Constant.BoolValue;
+            value.FindPropertyRelative("constant.floatValue").floatValue = fromExpression.Value.Constant.FloatValue;
+            value.FindPropertyRelative("constant.integerValue").intValue = fromExpression.Value.Constant.IntegerValue;
+            value.FindPropertyRelative("sourceState.target").enumValueIndex = (int)fromExpression.Value.SourceState.Target;
+            value.FindPropertyRelative("sourceState.key").stringValue = fromExpression.Value.SourceState.Key;
+
+            var operatorExpression = toExpression.FindPropertyRelative("operatorExpression");
+            operatorExpression.FindPropertyRelative("operator").enumValueIndex = (int)fromExpression.OperatorExpression.Operator;
+
+            if (fromExpression.OperatorExpression.Operands != null) {
+                var operands = operatorExpression.FindPropertyRelative("operands");
+
+                operands.arraySize = 1;
+                var operand = operands.GetArrayElementAtIndex(0);
+
+                SetExpression(fromExpression.OperatorExpression.Operands[0], operand);
+            }
+
         }
 
         public static void SetTransformValue(Object obj, string propertyName, Transform value) {
@@ -123,7 +164,7 @@ namespace Ponta.CCK_Generator.Base
             return serializedObject;
         }
 
-        static void PrintAll(Object obj) {
+        static void PrintAllProperty(Object obj) {
 
             var so = new SerializedObject(obj);
             var sp = so.GetIterator();
