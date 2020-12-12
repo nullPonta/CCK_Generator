@@ -14,9 +14,11 @@ namespace Ponta.CCK_Generator.Base
     {
         List<TriggerParam> OnCreateItemTriggerParamList;
 
+        /* Grab */
         List<TriggerParam> OnGrabItemTriggerParamList;
         List<TriggerParam> OnReleaseItemTriggerParamList;
 
+        /* UseItem */
         List<TriggerParam> UseItemTriggerParamList_Down;
         List<TriggerParam> UseItemTriggerParamList_Up;
 

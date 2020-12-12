@@ -7,11 +7,11 @@ namespace Ponta.CCK_Generator.Base
 {
     public class GameObjectCreator
     {
-        HandGunDefinition definition;
+        PrefabsPathController definition;
         GameObject gameObject;
 
 
-        public bool Init(HandGunDefinition definition) {
+        public bool Init(PrefabsPathController definition) {
 
             this.definition = definition;
 

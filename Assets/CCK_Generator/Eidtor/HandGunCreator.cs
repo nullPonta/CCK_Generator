@@ -17,7 +17,7 @@ namespace Ponta.CCK_Generator
             GameObjectCreator gameObjectCreator = new GameObjectCreator();
             HandGunDefinition handGunDefinition = new HandGunDefinition();
 
-            var result = gameObjectCreator.Init(handGunDefinition);
+            var result = gameObjectCreator.Init(handGunDefinition.prefabsPathController);
             if (!result) { return; }
 
             handGunDefinition.AddComponent(gameObjectCreator);
@@ -26,8 +26,10 @@ namespace Ponta.CCK_Generator
 
     }
 
-    public class HandGunDefinition : BaseDefinition
+    public class HandGunDefinition
     {
+        public PrefabsPathController prefabsPathController = new PrefabsPathController();
+
         ItemInfo itemInfo = new ItemInfo();
 
         TriggerInfo triggerInfo = new TriggerInfo();
@@ -37,8 +39,9 @@ namespace Ponta.CCK_Generator
 
         public HandGunDefinition() {
 
-            OutputPath = "HandGun.prefab";
-            PrototypePath = "Prototype_HandGun.prefab";
+            /* Set path */
+            prefabsPathController.OutputPath = "HandGun.prefab";
+            prefabsPathController.PrototypePath = "Prototype_HandGun.prefab";
 
             /* Define : Item  */
             itemInfo.isItem = true;
