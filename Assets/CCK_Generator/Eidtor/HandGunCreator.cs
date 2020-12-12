@@ -1,9 +1,9 @@
 ﻿using ClusterVR.CreatorKit;
-using ClusterVR.CreatorKit.Trigger.Implements;
+using ClusterVR.CreatorKit.Gimmick;
+using ClusterVR.CreatorKit.Operation;
+using ClusterVR.CreatorKit.Trigger;
 using Ponta.CCK_Generator.Base;
 using UnityEditor;
-
-using TriggerTarget = ClusterVR.CreatorKit.Trigger.TriggerTarget;
 
 
 namespace Ponta.CCK_Generator
@@ -72,6 +72,21 @@ namespace Ponta.CCK_Generator
             triggerInfo.AddUseItemTrigger_Down(shootUnlessReloading);
 
             /* Define : ItemLogic */
+            {
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "ShootUnlessReloading");
+
+                /* Logic */
+                // if (!reloading) { SendSignal(Item, "ShootOrReload") }
+                var sendSignal = LogicParamGenerator.CreateSingleStatement(
+                        LogicParamGenerator.CreateExpression_IF(Operator.Not, GimmickTarget.Item, "reloading"),
+                        new Base.TargetState(TargetStateTarget.Item, "ShootOrReload", ParameterType.Signal));
+
+                var logic = LogicParamGenerator.CreateLogic_AtSingleStatement(sendSignal);
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
 
         }
 
@@ -79,6 +94,7 @@ namespace Ponta.CCK_Generator
 
             gameObjectCreator.AddItem(itemInfo);
             gameObjectCreator.AddTrigger(triggerInfo);
+
             gameObjectCreator.AddLogic(logicInfo);
         }
 

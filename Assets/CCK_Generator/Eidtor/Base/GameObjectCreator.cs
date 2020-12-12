@@ -51,15 +51,15 @@ namespace Ponta.CCK_Generator.Base
         }
 
         public void AddItem(ItemInfo itemInfo) {
-            itemInfo.AddItem(gameObject);
+            itemInfo.AddItemComponent(gameObject);
         }
 
         public void AddTrigger(TriggerInfo triggerInfo) {
-            triggerInfo.AddTrigger(gameObject);
+            triggerInfo.AddTriggerComponent(gameObject);
         }
 
         public void AddLogic(LogicInfo logicInfo) {
-            logicInfo.AddLogic(gameObject);
+            logicInfo.AddLogicComponent(gameObject);
         }
 
         GameObject LoadPrototypePrefab() {

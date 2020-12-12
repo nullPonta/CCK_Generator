@@ -15,7 +15,7 @@ namespace Ponta.CCK_Generator.Base
         public bool isGrabbableItem;
 
 
-        public void AddItem(GameObject gameObject) {
+        public void AddItemComponent(GameObject gameObject) {
 
             /* Item */
             if (isItem) {

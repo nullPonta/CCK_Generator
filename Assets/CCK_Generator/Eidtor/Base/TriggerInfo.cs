@@ -1,6 +1,7 @@
 ﻿using ClusterVR.CreatorKit;
 using ClusterVR.CreatorKit.Item.Implements;
 using ClusterVR.CreatorKit.Trigger.Implements;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TriggerTarget = ClusterVR.CreatorKit.Trigger.TriggerTarget;
@@ -40,7 +41,7 @@ namespace Ponta.CCK_Generator.Base
             AddTriggerParamToList(triggerParam, ref UseItemTriggerParamList_Up);
         }
 
-        public void AddTrigger(GameObject gameObject) {
+        public void AddTriggerComponent(GameObject gameObject) {
 
             /* OnCreateItemTrigger */
             if (OnCreateItemTriggerParamList != null) {

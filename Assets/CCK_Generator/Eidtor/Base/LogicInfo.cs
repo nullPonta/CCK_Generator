@@ -12,49 +12,34 @@ namespace Ponta.CCK_Generator.Base
 
     public class LogicInfo
     {
+        List<LogicParam> itemLogicParamList;
 
-        public void AddLogic(GameObject gameObject) {
 
-            var itemLogic = gameObject.AddComponent<ItemLogic>();
-
-            /* On receive key : GimmickKey */
-            var gimmickKey = new GimmickKey(GimmickTarget.Item, "ShootUnlessReloading");
-
-            /* TargetState */
-            var targetState = new TargetState(TargetStateTarget.Item, "ShootOrReload", ParameterType.Signal);
-
-            /* Expression */
-            var value = new ExpressionValue(ValueType.Constant, new ConstantValue(false), new SourceState(GimmickTarget.Item, null));
-
-            OperatorExpression operatorExpression;
-
-            {
-                var operands = new List<Expression>();
-
-                var valueB = new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(GimmickTarget.Item, "reloading"));
-                var operatorExpressionB = new OperatorExpression(Operator.Not, null);
-
-                var operand = new Expression(ExpressionType.Value, valueB, operatorExpressionB);
-
-                operands.Add(operand);
-
-                operatorExpression = new OperatorExpression(Operator.Not, operands);
-            }
-
-            var expression = new Expression(ExpressionType.OperatorExpression, value, operatorExpression);
-
-            /* Logic */
-            var singleStatement = new SingleStatement(targetState, expression);
-            var statement = new Statement(singleStatement);
-            var logic = new Logic();
-
-            logic.Statements.Add(statement);
-
-            LogicParam logicParam = new LogicParam(gimmickKey, logic);
-
-            SerializedObjectUtil.SetLogicValue(itemLogic, "logic", logicParam);
+        public void AddItemLogicParam(LogicParam logicParam) {
+            AddLogicParamToList(logicParam, ref itemLogicParamList);
         }
 
+        public void AddLogicComponent(GameObject gameObject) {
+
+            /* ItemLogic */
+            if (itemLogicParamList != null) {
+
+                foreach(var logicParam in itemLogicParamList) {
+                    var itemLogic = gameObject.AddComponent<ItemLogic>();
+                    SerializedObjectUtil.SetLogicValue(itemLogic, "logic", logicParam);
+                }
+            }
+            
+        }
+
+        void AddLogicParamToList(LogicParam logicParam, ref List<LogicParam> list) {
+
+            if (list == null) {
+                list = new List<LogicParam>();
+            }
+
+            list.Add(logicParam);
+        }
     }
 
     public class Logic

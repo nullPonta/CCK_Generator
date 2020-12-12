@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 4684199509145720010}
   - component: {fileID: 2140997772032251261}
   - component: {fileID: 3309780019026336173}
-  - component: {fileID: 5152900835292425479}
+  - component: {fileID: 7432892222064120795}
   m_Layer: 14
   m_Name: HandGun
   m_TagString: Untagged
@@ -337,7 +337,7 @@ MonoBehaviour:
       floatValue: 0
       integerValue: 0
   upTriggers: []
---- !u!114 &5152900835292425479
+--- !u!114 &7432892222064120795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
