@@ -114,25 +114,60 @@ namespace Ponta.CCK_Generator.Base
 
             toExpression.FindPropertyRelative("type").enumValueIndex = (int)fromExpression.Type;
 
+            /* value */
             var value = toExpression.FindPropertyRelative("value");
             value.FindPropertyRelative("type").enumValueIndex = (int)fromExpression.Value.Type;
+
             value.FindPropertyRelative("constant.type").enumValueIndex = (int)fromExpression.Value.Constant.Type;
             value.FindPropertyRelative("constant.boolValue").boolValue = fromExpression.Value.Constant.BoolValue;
             value.FindPropertyRelative("constant.floatValue").floatValue = fromExpression.Value.Constant.FloatValue;
             value.FindPropertyRelative("constant.integerValue").intValue = fromExpression.Value.Constant.IntegerValue;
+
             value.FindPropertyRelative("sourceState.target").enumValueIndex = (int)fromExpression.Value.SourceState.Target;
             value.FindPropertyRelative("sourceState.key").stringValue = fromExpression.Value.SourceState.Key;
 
+            /* operatorExpression */
             var operatorExpression = toExpression.FindPropertyRelative("operatorExpression");
             operatorExpression.FindPropertyRelative("operator").enumValueIndex = (int)fromExpression.OperatorExpression.Operator;
 
             if (fromExpression.OperatorExpression.Operands != null) {
                 var operands = operatorExpression.FindPropertyRelative("operands");
 
-                operands.arraySize = 1;
+                operands.arraySize++;
                 var operand = operands.GetArrayElementAtIndex(0);
 
-                SetExpression(fromExpression.OperatorExpression.Operands[0], operand);
+                SetExpressionAtLostType(fromExpression.OperatorExpression.Operands[0], operand);
+            }
+
+        }
+
+        static void SetExpressionAtLostType(Expression fromExpression, SerializedProperty toExpression) {
+
+            toExpression.FindPropertyRelative("type").intValue = (int)fromExpression.Type;
+
+            /* value */
+            var value = toExpression.FindPropertyRelative("value");
+            value.FindPropertyRelative("type").intValue = (int)fromExpression.Value.Type;
+
+            value.FindPropertyRelative("constant.type").intValue = (int)fromExpression.Value.Constant.Type;
+            value.FindPropertyRelative("constant.boolValue").boolValue = fromExpression.Value.Constant.BoolValue;
+            value.FindPropertyRelative("constant.floatValue").floatValue = fromExpression.Value.Constant.FloatValue;
+            value.FindPropertyRelative("constant.integerValue").intValue = fromExpression.Value.Constant.IntegerValue;
+
+            value.FindPropertyRelative("sourceState.target").intValue = (int)fromExpression.Value.SourceState.Target;
+            value.FindPropertyRelative("sourceState.key").stringValue = fromExpression.Value.SourceState.Key;
+
+            /* operatorExpression */
+            var operatorExpression = toExpression.FindPropertyRelative("operatorExpression");
+            operatorExpression.FindPropertyRelative("operator").intValue = (int)fromExpression.OperatorExpression.Operator;
+
+            if (fromExpression.OperatorExpression.Operands != null) {
+                var operands = operatorExpression.FindPropertyRelative("operands");
+
+                operands.arraySize++;
+                var operand = operands.GetArrayElementAtIndex(0);
+
+                SetExpressionAtLostType(fromExpression.OperatorExpression.Operands[0], operand);
             }
 
         }
@@ -172,6 +207,16 @@ namespace Ponta.CCK_Generator.Base
             Debug.Log("--- SerializedProperty ---");
 
             while (sp.Next(true)) {
+                Debug.Log(sp.propertyType + " : " + sp.propertyPath + " : " + sp.displayName);
+            }
+
+        }
+        static void PrintAllProperty(SerializedProperty inSp) {
+
+            var e = inSp.GetEnumerator();
+
+            while (e.MoveNext()) {
+                SerializedProperty sp = e.Current as SerializedProperty;
                 Debug.Log(sp.propertyType + " : " + sp.propertyPath + " : " + sp.displayName);
             }
 

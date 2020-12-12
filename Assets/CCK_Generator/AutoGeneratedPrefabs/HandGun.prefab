@@ -377,9 +377,9 @@ MonoBehaviour:
             operands:
             - type: 0
               value:
-                type: 0
+                type: 1
                 constant:
-                  type: 0
+                  type: 1
                   boolValue: 0
                   floatValue: 0
                   integerValue: 0
