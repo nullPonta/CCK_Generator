@@ -12,6 +12,9 @@ namespace Ponta.CCK_Generator.Base
             return new GimmickKey(gimmickTarget, key);
         }
 
+        /* ---------------------------------------------------------------- */
+        // ExpressionValue
+        /* ---------------------------------------------------------------- */
         public static ExpressionValue CreateExpressionValue_EMPTY() {
             return new ExpressionValue(ValueType.Constant, new ConstantValue(false), new SourceState(GimmickTarget.Item, null));
         }
@@ -20,6 +23,9 @@ namespace Ponta.CCK_Generator.Base
             return new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(GimmickTarget.Item, null));
         }
 
+        /* ---------------------------------------------------------------- */
+        // Expression
+        /* ---------------------------------------------------------------- */
         public static Expression CreateExpression_TARGET_OPERAND(GimmickTarget target, string sourcekey) {
 
             var value = new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(target, sourcekey));
@@ -28,7 +34,7 @@ namespace Ponta.CCK_Generator.Base
             return new Expression(ExpressionType.Value, value, operatorExpression);
         }
 
-        public static Expression CreateExpression_CONSTANT(ConstantValue constantValue, string sourcekey) {
+        public static Expression CreateExpression_CONSTANT(ConstantValue constantValue) {
 
             var value = new ExpressionValue(ValueType.Constant, constantValue, new SourceState(GimmickTarget.Item, null));
             var operatorExpression = new OperatorExpression(Operator.Not, null);
@@ -36,6 +42,9 @@ namespace Ponta.CCK_Generator.Base
             return new Expression(ExpressionType.Value, value, operatorExpression);
         }
 
+        /* ---------------------------------------------------------------- */
+        // SingleStatement
+        /* ---------------------------------------------------------------- */
         public static SingleStatement CreateSingleStatement(Operator inOperator, Expression inExpression, TargetState target) {
 
             /* OperatorExpression */
@@ -67,15 +76,35 @@ namespace Ponta.CCK_Generator.Base
             return new SingleStatement(target, expression);
         }
 
+        public static List<SingleStatement>  CreateSingleStatementList() {
+            return new List<SingleStatement>();
+        }
+
+        /* ---------------------------------------------------------------- */
+        // Logic
+        /* ---------------------------------------------------------------- */
         public static Logic CreateLogic_AtSingleStatement(SingleStatement singleStatement) {
 
-            var statement = new Statement(singleStatement);
             var logic = new Logic();
+            var statement = new Statement(singleStatement);
 
             logic.Statements.Add(statement);
 
             return logic;
         }
+
+        public static Logic CreateLogic_AtMultiStatement(List<SingleStatement> singleStatementList) {
+
+            var logic = new Logic();
+
+            foreach(var singleStatement in singleStatementList) {
+                var statement = new Statement(singleStatement);
+                logic.Statements.Add(statement);
+            }
+
+            return logic;
+        }
+
 
     }
 

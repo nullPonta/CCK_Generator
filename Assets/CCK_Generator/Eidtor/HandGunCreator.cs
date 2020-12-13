@@ -1,8 +1,8 @@
-﻿using ClusterVR.CreatorKit;
-using ClusterVR.CreatorKit.Gimmick;
+﻿using ClusterVR.CreatorKit.Gimmick;
 using ClusterVR.CreatorKit.Operation;
 using ClusterVR.CreatorKit.Trigger;
 using Ponta.CCK_Generator.Base;
+using System.Collections.Generic;
 using UnityEditor;
 
 
@@ -44,7 +44,7 @@ namespace Ponta.CCK_Generator
             prefabsPathController.PrototypePath = "Prototype_HandGun.prefab";
 
             /* ---------------------------------------------------------------- */
-            /* Define : Item  */
+            // Define : Item
             /* ---------------------------------------------------------------- */
             itemInfo.isItem = true;
             itemInfo.itemName = "ハンドガン";
@@ -54,7 +54,7 @@ namespace Ponta.CCK_Generator
             itemInfo.isGrabbableItem = true;
 
             /* ---------------------------------------------------------------- */
-            /* Define : Trigger  */
+            // Define : Trigger
             /* ---------------------------------------------------------------- */
 
             /* OnCreateItemTrigger */
@@ -81,7 +81,7 @@ namespace Ponta.CCK_Generator
             triggerInfo.AddUseItemTrigger_Down(shootUnlessReloading);
 
             /* ---------------------------------------------------------------- */
-            /* Define : Item  */
+            // Define : Logic
             /* ---------------------------------------------------------------- */
 
             /* ItemLogic */
@@ -105,13 +105,14 @@ namespace Ponta.CCK_Generator
                 /* Logic */
                 // if (bullets > 0) { SendSignal(Item, "Shoot") }
                 // if (bullets <= 0) { SendSignal(Item, "Reload") }
-                var sendShootSignal = LogicParamGenerator.CreateSingleStatement_COMPARE(
-                        Operator.GreaterThan,
-                        LogicParamGenerator.CreateExpression_TARGET_OPERAND(GimmickTarget.Item, "bullets"),
-                        LogicParamGenerator.CreateExpression_CONSTANT(new Base.ConstantValue(0), "bullets"),
-                        new Base.TargetState(TargetStateTarget.Item, "Shoot", ParameterType.Signal));
+                var sendShootSignal = LogicParamWrapper.SendSignalToSelfByCompare(Operator.GreaterThan, "bullets", new Base.ConstantValue(0), "Shoot");
+                var sendReloadSignal = LogicParamWrapper.SendSignalToSelfByCompare(Operator.LessThanOrEqual, "bullets", new Base.ConstantValue(0), "Reload");
 
-                var logic = LogicParamGenerator.CreateLogic_AtSingleStatement(sendShootSignal);
+                var sendSignalList = LogicParamGenerator.CreateSingleStatementList();
+                sendSignalList.Add(sendShootSignal);
+                sendSignalList.Add(sendReloadSignal);
+
+                var logic = LogicParamGenerator.CreateLogic_AtMultiStatement(sendSignalList);
 
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));

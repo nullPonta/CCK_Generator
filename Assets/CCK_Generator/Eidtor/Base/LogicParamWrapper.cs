@@ -18,13 +18,17 @@ namespace Ponta.CCK_Generator.Base {
             return sendSignal;
         }
 
-        public static SingleStatement SendSignalToSelfByCompare(Operator inOperator, string key, string sendKey) {
+        public static SingleStatement SendSignalToSelfByCompare(
+            Operator inOperator,
+            string compareKey,
+            ConstantValue constantValue,
+            string sendKey) {
 
             var sendSignal = LogicParamGenerator.CreateSingleStatement_COMPARE(
                         inOperator,
-                        LogicParamGenerator.CreateExpression_TARGET_OPERAND(GimmickTarget.Item, "bullets"),
-                        LogicParamGenerator.CreateExpression_CONSTANT(new Base.ConstantValue(0), "bullets"),
-                        new Base.TargetState(TargetStateTarget.Item, "Shoot", ParameterType.Signal));
+                        LogicParamGenerator.CreateExpression_TARGET_OPERAND(GimmickTarget.Item, compareKey),
+                        LogicParamGenerator.CreateExpression_CONSTANT(constantValue),
+                        new Base.TargetState(TargetStateTarget.Item, sendKey, ParameterType.Signal));
 
             return sendSignal;
         }
