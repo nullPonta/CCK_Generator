@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 7432892222064120795}
   - component: {fileID: 8559270713168222168}
   - component: {fileID: 7989958163865206819}
+  - component: {fileID: 7409439383833476365}
   m_Layer: 14
   m_Name: HandGun
   m_TagString: Untagged
@@ -565,6 +566,92 @@ MonoBehaviour:
                   boolValue: 0
                   floatValue: 0
                   integerValue: 1
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+--- !u!114 &7409439383833476365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112312058039853198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06d8dc2ce9e442ab2712de694945b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 8686237320882906205}
+  key:
+    target: 0
+    key: Reload
+  logic:
+    statements:
+    - singleStatement:
+        targetState:
+          target: 0
+          key: reloading
+          parameterType: 1
+        expression:
+          type: 0
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 1
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 0
+            operands:
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+    - singleStatement:
+        targetState:
+          target: 0
+          key: enableUI
+          parameterType: 1
+        expression:
+          type: 0
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 0
+            operands:
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
                 sourceState:
                   target: 0
                   key: 

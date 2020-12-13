@@ -27,6 +27,10 @@ namespace Ponta.CCK_Generator.Base
             return new ExpressionValue(ValueType.Constant, new ConstantValue(false), new SourceState(GimmickTarget.Item, null));
         }
 
+        public static ExpressionValue CreateExpressionValue_SETVALUE(ConstantValue constantValue) {
+            return new ExpressionValue(ValueType.Constant, constantValue, new SourceState(GimmickTarget.Item, null));
+        }
+
         /* ---------------------------------------------------------------- */
         // Expression
         /* ---------------------------------------------------------------- */
@@ -54,15 +58,11 @@ namespace Ponta.CCK_Generator.Base
             Operator inOperator,
             Expression inExpression) {
 
-            /* OperatorExpression */
-            var operands = new List<Expression>();
-            operands.Add(inExpression);
-
-            OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
-
             /* Expression */
-            var emptyValue = CreateExpressionValue_EMPTY();
-            var expression = new Expression(ExpressionType.OperatorExpression, emptyValue, operatorExpression);
+            var expression = new Expression(
+                ExpressionType.OperatorExpression,
+                CreateExpressionValue_EMPTY(),
+                CreateOperatorExpression(inOperator, inExpression));
 
             return new SingleStatement(target, expression);
         }
@@ -73,16 +73,11 @@ namespace Ponta.CCK_Generator.Base
             Expression inExpression_1st,
             Expression inExpression_2nd) {
 
-            /* OperatorExpression */
-            var operands = new List<Expression>();
-            operands.Add(inExpression_1st);
-            operands.Add(inExpression_2nd);
-
-            OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
-
             /* Expression */
-            var expressionValue = CreateExpressionValue_COMPARE();
-            var expression = new Expression(ExpressionType.OperatorExpression, expressionValue, operatorExpression);
+            var expression = new Expression(
+                ExpressionType.OperatorExpression,
+                CreateExpressionValue_COMPARE(),
+                CreateOperatorExpression(inOperator, inExpression_1st, inExpression_2nd));
 
             return new SingleStatement(target, expression);
         }
@@ -93,16 +88,26 @@ namespace Ponta.CCK_Generator.Base
             Expression inExpression_1st,
             Expression inExpression_2nd) {
 
-            /* OperatorExpression */
-            var operands = new List<Expression>();
-            operands.Add(inExpression_1st);
-            operands.Add(inExpression_2nd);
+            /* Expression */
+            var expression = new Expression(
+                ExpressionType.OperatorExpression,
+                CreateExpressionValue_CALCULATE(),
+                CreateOperatorExpression(inOperator, inExpression_1st, inExpression_2nd));
 
-            OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
+            return new SingleStatement(target, expression);
+        }
+
+        public static SingleStatement CreateSingleStatement_SETVALUE(
+            TargetState target,
+            ConstantValue constantValue) {
 
             /* Expression */
-            var expressionValue = CreateExpressionValue_CALCULATE();
-            var expression = new Expression(ExpressionType.OperatorExpression, expressionValue, operatorExpression);
+            var expression = new Expression(
+                ExpressionType.Value,
+                CreateExpressionValue_SETVALUE(constantValue),
+                CreateOperatorExpression(
+                    Operator.Not,
+                    CreateExpression_CONSTANT(new ConstantValue(false))));
 
             return new SingleStatement(target, expression);
         }
@@ -136,6 +141,35 @@ namespace Ponta.CCK_Generator.Base
             return logic;
         }
 
+        /* ---------------------------------------------------------------- */
+        // OperatorExpression
+        /* ---------------------------------------------------------------- */
+        static OperatorExpression CreateOperatorExpression(
+            Operator inOperator,
+            Expression inExpression_1st) {
+
+            /* OperatorExpression */
+            var operands = new List<Expression>();
+            operands.Add(inExpression_1st);
+
+            OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
+
+            return operatorExpression;
+        }
+
+        static OperatorExpression CreateOperatorExpression(
+            Operator inOperator,
+            Expression inExpression_1st,
+            Expression inExpression_2nd) {
+
+            var operands = new List<Expression>();
+            operands.Add(inExpression_1st);
+            operands.Add(inExpression_2nd);
+
+            OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
+
+            return operatorExpression;
+        }
 
     }
 

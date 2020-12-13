@@ -132,6 +132,26 @@ namespace Ponta.CCK_Generator
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
             }
 
+            {
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "Reload");
+
+                /* Logic */
+                // reloading = true
+                // enableUI = false
+
+                var setReloading = LogicParamWrapper.SetValue("reloading", new Base.ConstantValue(true));
+                var setEnableUI = LogicParamWrapper.SetValue("enableUI", new Base.ConstantValue(false));
+
+                var list = LogicParamGenerator.CreateSingleStatementList();
+                list.Add(setReloading);
+                list.Add(setEnableUI);
+
+                var logic = LogicParamGenerator.CreateLogic_AtMultiStatement(list);
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
 
         }
 

@@ -41,17 +41,8 @@ namespace Ponta.CCK_Generator.Base {
             string calculateKey,
             ConstantValue constantValue) {
 
-            TargetState targetState = null;
-
-            if (constantValue.Type == ParameterType.Float) {
-                targetState = new TargetState(TargetStateTarget.Item, calculateKey, ParameterType.Float);
-            }
-            else if (constantValue.Type == ParameterType.Integer) {
-                targetState = new TargetState(TargetStateTarget.Item, calculateKey, ParameterType.Integer);
-            }
-
             var calculate = LogicParamGenerator.CreateSingleStatement_CALCULATE(
-                        targetState,
+                        CreateTargetState(constantValue, calculateKey),
                         ope,
                         LogicParamGenerator.CreateExpression_TARGET_OPERAND(GimmickTarget.Item, calculateKey),
                         LogicParamGenerator.CreateExpression_CONSTANT(constantValue));
@@ -59,6 +50,33 @@ namespace Ponta.CCK_Generator.Base {
             return calculate;
         }
 
+        public static SingleStatement SetValue(
+            string targetKey,
+            ConstantValue constantValue) {
+
+            var sendSignal = LogicParamGenerator.CreateSingleStatement_SETVALUE(
+                        CreateTargetState(constantValue, targetKey),
+                        constantValue);
+
+            return sendSignal;
+        }
+
+        static TargetState CreateTargetState(ConstantValue constantValue, string key) {
+
+            TargetState targetState = null;
+
+            if (constantValue.Type == ParameterType.Bool) {
+                targetState = new TargetState(TargetStateTarget.Item, key, ParameterType.Bool);
+            }
+            else if (constantValue.Type == ParameterType.Float) {
+                targetState = new TargetState(TargetStateTarget.Item, key, ParameterType.Float);
+            }
+            else if (constantValue.Type == ParameterType.Integer) {
+                targetState = new TargetState(TargetStateTarget.Item, key, ParameterType.Integer);
+            }
+
+            return targetState;
+        }
 
     }
 
