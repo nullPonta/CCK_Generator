@@ -23,12 +23,16 @@ namespace Ponta.CCK_Generator.Base
             return new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(GimmickTarget.Item, null));
         }
 
+        public static ExpressionValue CreateExpressionValue_CALCULATE() {
+            return new ExpressionValue(ValueType.Constant, new ConstantValue(false), new SourceState(GimmickTarget.Item, null));
+        }
+
         /* ---------------------------------------------------------------- */
         // Expression
         /* ---------------------------------------------------------------- */
-        public static Expression CreateExpression_TARGET_OPERAND(GimmickTarget target, string sourcekey) {
+        public static Expression CreateExpression_TARGET_OPERAND(GimmickTarget sourceRarget, string sourcekey) {
 
-            var value = new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(target, sourcekey));
+            var value = new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(sourceRarget, sourcekey));
             var operatorExpression = new OperatorExpression(Operator.Not, null);
 
             return new Expression(ExpressionType.Value, value, operatorExpression);
@@ -45,7 +49,10 @@ namespace Ponta.CCK_Generator.Base
         /* ---------------------------------------------------------------- */
         // SingleStatement
         /* ---------------------------------------------------------------- */
-        public static SingleStatement CreateSingleStatement(Operator inOperator, Expression inExpression, TargetState target) {
+        public static SingleStatement CreateSingleStatement(
+            TargetState target,
+            Operator inOperator,
+            Expression inExpression) {
 
             /* OperatorExpression */
             var operands = new List<Expression>();
@@ -54,13 +61,17 @@ namespace Ponta.CCK_Generator.Base
             OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
 
             /* Expression */
-            var emptyValue = LogicParamGenerator.CreateExpressionValue_EMPTY();
+            var emptyValue = CreateExpressionValue_EMPTY();
             var expression = new Expression(ExpressionType.OperatorExpression, emptyValue, operatorExpression);
 
             return new SingleStatement(target, expression);
         }
 
-        public static SingleStatement CreateSingleStatement_COMPARE(Operator inOperator, Expression inExpression_1st, Expression inExpression_2nd, TargetState target) {
+        public static SingleStatement CreateSingleStatement_COMPARE(
+            TargetState target,
+            Operator inOperator,
+            Expression inExpression_1st,
+            Expression inExpression_2nd) {
 
             /* OperatorExpression */
             var operands = new List<Expression>();
@@ -70,8 +81,28 @@ namespace Ponta.CCK_Generator.Base
             OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
 
             /* Expression */
-            var emptyValue = LogicParamGenerator.CreateExpressionValue_COMPARE();
-            var expression = new Expression(ExpressionType.OperatorExpression, emptyValue, operatorExpression);
+            var expressionValue = CreateExpressionValue_COMPARE();
+            var expression = new Expression(ExpressionType.OperatorExpression, expressionValue, operatorExpression);
+
+            return new SingleStatement(target, expression);
+        }
+
+        public static SingleStatement CreateSingleStatement_CALCULATE(
+            TargetState target,
+            Operator inOperator,
+            Expression inExpression_1st,
+            Expression inExpression_2nd) {
+
+            /* OperatorExpression */
+            var operands = new List<Expression>();
+            operands.Add(inExpression_1st);
+            operands.Add(inExpression_2nd);
+
+            OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
+
+            /* Expression */
+            var expressionValue = CreateExpressionValue_CALCULATE();
+            var expression = new Expression(ExpressionType.OperatorExpression, expressionValue, operatorExpression);
 
             return new SingleStatement(target, expression);
         }

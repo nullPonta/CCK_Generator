@@ -1,4 +1,5 @@
-﻿using ClusterVR.CreatorKit.Gimmick;
+﻿using ClusterVR.CreatorKit;
+using ClusterVR.CreatorKit.Gimmick;
 using ClusterVR.CreatorKit.Operation;
 using ClusterVR.CreatorKit.Trigger;
 using Ponta.CCK_Generator.Base;
@@ -117,6 +118,20 @@ namespace Ponta.CCK_Generator
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
             }
+
+            {
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "Shoot");
+
+                /* Logic */
+                // bullets = bullets - 1
+                var subtractFromTheBullets = LogicParamWrapper.Calculate(Operator.Subtract, "bullets", new Base.ConstantValue(1));
+                var logic = LogicParamGenerator.CreateLogic_AtSingleStatement(subtractFromTheBullets);
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
+
 
         }
 
