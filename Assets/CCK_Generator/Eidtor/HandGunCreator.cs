@@ -105,13 +105,16 @@ namespace Ponta.CCK_Generator
                 /* Logic */
                 // if (bullets > 0) { SendSignal(Item, "Shoot") }
                 // if (bullets <= 0) { SendSignal(Item, "Reload") }
-                var sendShootSignal = LogicParamGenerator.CreateSingleStatement(
-                        LogicParamGenerator.CreateExpression_IF(Operator.GreaterThan, GimmickTarget.Item, "bullets"),
+                var sendShootSignal = LogicParamGenerator.CreateSingleStatement_COMPARE(
+                        Operator.GreaterThan,
+                        LogicParamGenerator.CreateExpression_TARGET_OPERAND(GimmickTarget.Item, "bullets"),
+                        LogicParamGenerator.CreateExpression_CONSTANT(new Base.ConstantValue(0), "bullets"),
                         new Base.TargetState(TargetStateTarget.Item, "Shoot", ParameterType.Signal));
 
+                var logic = LogicParamGenerator.CreateLogic_AtSingleStatement(sendShootSignal);
 
                 /* LogicParam */
-
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
             }
 
         }

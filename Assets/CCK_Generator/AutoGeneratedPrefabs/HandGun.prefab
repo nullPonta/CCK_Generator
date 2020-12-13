@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 2140997772032251261}
   - component: {fileID: 3309780019026336173}
   - component: {fileID: 7432892222064120795}
+  - component: {fileID: 8559270713168222168}
   m_Layer: 14
   m_Name: HandGun
   m_TagString: Untagged
@@ -386,6 +387,72 @@ MonoBehaviour:
                 sourceState:
                   target: 0
                   key: reloading
+              operatorExpression:
+                operator: 0
+                operands: []
+--- !u!114 &8559270713168222168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112312058039853198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06d8dc2ce9e442ab2712de694945b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 8686237320882906205}
+  key:
+    target: 0
+    key: ShootOrReload
+  logic:
+    statements:
+    - singleStatement:
+        targetState:
+          target: 0
+          key: Shoot
+          parameterType: 0
+        expression:
+          type: 1
+          value:
+            type: 1
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 9
+            operands:
+            - type: 0
+              value:
+                type: 1
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: bullets
+              operatorExpression:
+                operator: 0
+                operands: []
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 3
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
               operatorExpression:
                 operator: 0
                 operands: []

@@ -133,10 +133,12 @@ namespace Ponta.CCK_Generator.Base
             if (fromExpression.OperatorExpression.Operands != null) {
                 var operands = operatorExpression.FindPropertyRelative("operands");
 
-                operands.arraySize++;
-                var operand = operands.GetArrayElementAtIndex(0);
+                foreach(var operand in fromExpression.OperatorExpression.Operands) {
+                    operands.arraySize++;
+                    var operandSp = operands.GetArrayElementAtIndex(operands.arraySize-1);
 
-                SetExpressionAtLostType(fromExpression.OperatorExpression.Operands[0], operand);
+                    SetExpressionAtLostType(operand, operandSp);
+                }
             }
 
         }

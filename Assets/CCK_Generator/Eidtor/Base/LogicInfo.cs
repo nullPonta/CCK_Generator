@@ -143,7 +143,7 @@ namespace Ponta.CCK_Generator.Base
         }
 
         public ConstantValue(int integerValue) {
-            Type = ParameterType.Bool;
+            Type = ParameterType.Integer;
             IntegerValue = integerValue;
         }
 
