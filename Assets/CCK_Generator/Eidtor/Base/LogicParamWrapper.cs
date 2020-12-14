@@ -42,7 +42,7 @@ namespace Ponta.CCK_Generator.Base {
             ConstantValue constantValue) {
 
             var calculate = LogicParamGenerator.CreateSingleStatement_CALCULATE(
-                        CreateTargetState(constantValue, calculateKey),
+                        CreateTargetState(constantValue.Type, calculateKey),
                         ope,
                         LogicParamGenerator.CreateExpression_TARGET_OPERAND(GimmickTarget.Item, calculateKey),
                         LogicParamGenerator.CreateExpression_CONSTANT(constantValue));
@@ -55,27 +55,26 @@ namespace Ponta.CCK_Generator.Base {
             ConstantValue constantValue) {
 
             var sendSignal = LogicParamGenerator.CreateSingleStatement_SETVALUE(
-                        CreateTargetState(constantValue, targetKey),
+                        CreateTargetState(constantValue.Type, targetKey),
                         constantValue);
 
             return sendSignal;
         }
 
-        static TargetState CreateTargetState(ConstantValue constantValue, string key) {
+        public static SingleStatement SetValueFromKey(
+            string targetKey,
+            ParameterType parameterType,
+            string sourceKey) {
 
-            TargetState targetState = null;
+            var sendSignal = LogicParamGenerator.CreateSingleStatement_SETVALUE_FROM_KEY(
+                        CreateTargetState(parameterType, targetKey),
+                        sourceKey);
 
-            if (constantValue.Type == ParameterType.Bool) {
-                targetState = new TargetState(TargetStateTarget.Item, key, ParameterType.Bool);
-            }
-            else if (constantValue.Type == ParameterType.Float) {
-                targetState = new TargetState(TargetStateTarget.Item, key, ParameterType.Float);
-            }
-            else if (constantValue.Type == ParameterType.Integer) {
-                targetState = new TargetState(TargetStateTarget.Item, key, ParameterType.Integer);
-            }
+            return sendSignal;
+        }
 
-            return targetState;
+        static TargetState CreateTargetState(ParameterType parameterType, string key) {
+            return new TargetState(TargetStateTarget.Item, key, parameterType);
         }
 
     }

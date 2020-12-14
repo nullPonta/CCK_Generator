@@ -1,4 +1,5 @@
-﻿using ClusterVR.CreatorKit.Gimmick;
+﻿using ClusterVR.CreatorKit;
+using ClusterVR.CreatorKit.Gimmick;
 using ClusterVR.CreatorKit.Gimmick.Implements;
 using ClusterVR.CreatorKit.Operation;
 using System.Collections.Generic;
@@ -29,6 +30,10 @@ namespace Ponta.CCK_Generator.Base
 
         public static ExpressionValue CreateExpressionValue_SETVALUE(ConstantValue constantValue) {
             return new ExpressionValue(ValueType.Constant, constantValue, new SourceState(GimmickTarget.Item, null));
+        }
+
+        public static ExpressionValue CreateExpressionValue_SETVALUE_FROM_KEY(ParameterType parameterType, string sourceKey) {
+            return new ExpressionValue(ValueType.RoomState, ConstantValue.CreateByType(parameterType), new SourceState(GimmickTarget.Item, sourceKey));
         }
 
         /* ---------------------------------------------------------------- */
@@ -112,8 +117,23 @@ namespace Ponta.CCK_Generator.Base
             return new SingleStatement(target, expression);
         }
 
-        public static List<SingleStatement>  CreateSingleStatementList() {
-            return new List<SingleStatement>();
+        public static SingleStatement CreateSingleStatement_SETVALUE_FROM_KEY(
+            TargetState target,
+            string sourceKey) {
+
+            /* Expression */
+            var expression = new Expression(
+                ExpressionType.Value,
+                CreateExpressionValue_SETVALUE_FROM_KEY(target.ParameterType, sourceKey),
+                CreateOperatorExpression(
+                    Operator.Not,
+                    CreateExpression_CONSTANT(new ConstantValue(false))));
+
+            return new SingleStatement(target, expression);
+        }
+
+        public static List<SingleStatement>  CreateSingleStatementList(params SingleStatement[] args) {
+            return new List<SingleStatement>(args);
         }
 
         /* ---------------------------------------------------------------- */

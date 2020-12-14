@@ -109,11 +109,8 @@ namespace Ponta.CCK_Generator
                 var sendShootSignal = LogicParamWrapper.SendSignalToSelfByCompare(Operator.GreaterThan, "bullets", new Base.ConstantValue(0), "Shoot");
                 var sendReloadSignal = LogicParamWrapper.SendSignalToSelfByCompare(Operator.LessThanOrEqual, "bullets", new Base.ConstantValue(0), "Reload");
 
-                var sendSignalList = LogicParamGenerator.CreateSingleStatementList();
-                sendSignalList.Add(sendShootSignal);
-                sendSignalList.Add(sendReloadSignal);
-
-                var logic = LogicParamGenerator.CreateLogic_AtMultiStatement(sendSignalList);
+                var logic = LogicParamGenerator.CreateLogic_AtMultiStatement(
+                                LogicParamGenerator.CreateSingleStatementList(sendShootSignal, sendReloadSignal));
 
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
@@ -143,14 +140,31 @@ namespace Ponta.CCK_Generator
                 var setReloading = LogicParamWrapper.SetValue("reloading", new Base.ConstantValue(true));
                 var setEnableUI = LogicParamWrapper.SetValue("enableUI", new Base.ConstantValue(false));
 
-                var list = LogicParamGenerator.CreateSingleStatementList();
-                list.Add(setReloading);
-                list.Add(setEnableUI);
-
-                var logic = LogicParamGenerator.CreateLogic_AtMultiStatement(list);
+                var logic = LogicParamGenerator.CreateLogic_AtMultiStatement(
+                                LogicParamGenerator.CreateSingleStatementList(setReloading, setEnableUI));
 
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
+
+            {
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "Reloaded");
+
+                /* Logic */
+                // bullets = maxBullets
+                // reloading = false
+                // enableUI = true
+                var setBulletsFromMaxBullets = LogicParamWrapper.SetValueFromKey("bullets", ParameterType.Integer, "maxBullets");
+                var setReloading = LogicParamWrapper.SetValue("reloading", new Base.ConstantValue(false));
+                var setEnableUI = LogicParamWrapper.SetValue("enableUI", new Base.ConstantValue(true));
+
+                var logic = LogicParamGenerator.CreateLogic_AtMultiStatement(
+                                LogicParamGenerator.CreateSingleStatementList(setBulletsFromMaxBullets, setReloading, setEnableUI));
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+
             }
 
         }

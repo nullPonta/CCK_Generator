@@ -147,6 +147,12 @@ namespace Ponta.CCK_Generator.Base
             IntegerValue = integerValue;
         }
 
+        public static ConstantValue CreateByType(ParameterType type) {
+            var instance = new ConstantValue();
+            instance.Type = type;
+            return instance;
+        }
+
     }
 
     public class SourceState
