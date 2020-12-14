@@ -21,6 +21,10 @@ namespace Ponta.CCK_Generator.Base
             if (isItem) {
                 var item = gameObject.AddComponent<Item>();
 
+                if(item == null) {
+                    item = gameObject.GetComponent<Item>();
+                }
+
                 SerializedObjectUtil.SetStringValue(item, "itemName", itemName);
             }
 

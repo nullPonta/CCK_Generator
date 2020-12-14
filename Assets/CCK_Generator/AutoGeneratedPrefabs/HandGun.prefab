@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8447214497582310046}
   - component: {fileID: 2543374732922880957}
+  - component: {fileID: 1739572438584436474}
   m_Layer: 14
   m_Name: ReloadingSound
   m_TagString: Untagged
@@ -127,6 +128,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1739572438584436474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347585354048138035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443f29dbc1134b0a82080dfb53bac3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 2543374732922880957}
+  globalGimmickKey:
+    key:
+      target: 0
+      key: Reload
+    item: {fileID: 8686237320882906205}
+  parameterType: 0
 --- !u!1 &1112312058039853198
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +158,8 @@ GameObject:
   - component: {fileID: 2813926952478039724}
   - component: {fileID: 7471362194337857772}
   - component: {fileID: 8686237320882906205}
+  - component: {fileID: 6714371995611787158}
+  - component: {fileID: 5516691804235284574}
   - component: {fileID: 6643138868357431627}
   - component: {fileID: 98906991403687493}
   - component: {fileID: 5090929665129750338}
@@ -208,6 +230,53 @@ MonoBehaviour:
   id:
     value: 0
   itemName: "\u30CF\u30F3\u30C9\u30AC\u30F3"
+--- !u!114 &6714371995611787158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112312058039853198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2d50bc3e074e22919ff17b806ad61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 8686237320882906205}
+  key:
+    target: 0
+    key: Shoot
+  itemTemplate: {fileID: -2917047267138979866, guid: 9d612c03e68af7d4e8450b8c421b16da,
+    type: 3}
+  itemTemplateId:
+    value: 9934117946081937418
+  spawnPoint: {fileID: 6729872946980701864}
+--- !u!114 &5516691804235284574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112312058039853198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a9785e42671427a8761e148889f041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 8686237320882906205}
+  key:
+    target: 0
+    key: Reload
+  delayTimeSeconds: 0.4
+  triggers:
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: Reloaded
+    type: 0
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 0
 --- !u!114 &6643138868357431627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,6 +858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3417084887529032265}
   - component: {fileID: 2846722388968704096}
+  - component: {fileID: 5894711865794643822}
   m_Layer: 14
   m_Name: ShootSound
   m_TagString: Untagged
@@ -906,6 +976,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5894711865794643822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705789841209806385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443f29dbc1134b0a82080dfb53bac3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 2846722388968704096}
+  globalGimmickKey:
+    key:
+      target: 0
+      key: Shoot
+    item: {fileID: 8686237320882906205}
+  parameterType: 0
 --- !u!1 &1986134353647002043
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,6 +1079,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6098438817496039634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724889499539770181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133ae1ad08034b85a0a2611463ae4964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7386157605104394140}
+  globalGimmickKey:
+    key:
+      target: 0
+      key: Shoot
+    item: {fileID: 8686237320882906205}
+  parameterType: 0
+  animatorParameterName: Shoot
+--- !u!114 &8217541063695337197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724889499539770181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133ae1ad08034b85a0a2611463ae4964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7386157605104394140}
+  globalGimmickKey:
+    key:
+      target: 0
+      key: reloading
+    item: {fileID: 8686237320882906205}
+  parameterType: 1
+  animatorParameterName: Reloading
 --- !u!1 &5621965806903766198
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1175,7 @@ GameObject:
   - component: {fileID: 2651229072069419964}
   - component: {fileID: 7487580329842001862}
   - component: {fileID: 6571192020717732294}
+  - component: {fileID: 8141468810427510926}
   m_Layer: 14
   m_Name: Canvas
   m_TagString: Untagged
@@ -1134,6 +1264,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8141468810427510926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229952470751346549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2b9f4eb5444df69e31db5c54e12447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalGimmickKey:
+    key:
+      target: 0
+      key: enableUI
+    item: {fileID: 8686237320882906205}
 --- !u!1 &6729872946244470928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,6 +1351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1929101388903667980}
   - component: {fileID: 1952461815049607704}
+  - component: {fileID: 1400304622458936650}
   m_Layer: 14
   m_Name: Ray
   m_TagString: Untagged
@@ -1245,6 +1393,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1400304622458936650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882953785610405208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2b9f4eb5444df69e31db5c54e12447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalGimmickKey:
+    key:
+      target: 0
+      key: enableUI
+    item: {fileID: 8686237320882906205}
 --- !u!1 &7892452377950759938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,6 +1499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116282357098617850}
   - component: {fileID: 4546203549175057430}
+  - component: {fileID: 1606051150614841971}
   m_Layer: 14
   m_Name: ReloadedSound
   m_TagString: Untagged
@@ -1451,6 +1617,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1606051150614841971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293493927930037382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443f29dbc1134b0a82080dfb53bac3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 4546203549175057430}
+  globalGimmickKey:
+    key:
+      target: 0
+      key: Reloaded
+    item: {fileID: 8686237320882906205}
+  parameterType: 0
 --- !u!1 &8489724719066752816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,7 +1796,7 @@ PrefabInstance:
         type: 3}
       propertyPath: globalGimmickKey.item
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8686237320882906205}
     - target: {fileID: 4624346209493753042, guid: af3fb76977a550442ba323b1e577e2ad,
         type: 3}
       propertyPath: m_Name
@@ -1751,7 +1936,7 @@ PrefabInstance:
         type: 3}
       propertyPath: globalGimmickKey.item
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8686237320882906205}
     - target: {fileID: 4624346209493753042, guid: af3fb76977a550442ba323b1e577e2ad,
         type: 3}
       propertyPath: m_Name
