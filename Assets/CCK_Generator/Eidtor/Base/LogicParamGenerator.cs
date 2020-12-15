@@ -39,7 +39,7 @@ namespace Ponta.CCK_Generator.Base
         /* ---------------------------------------------------------------- */
         // Expression
         /* ---------------------------------------------------------------- */
-        public static Expression CreateExpression_TARGET_OPERAND(GimmickTarget sourceRarget, string sourcekey) {
+        public static Expression CreateExpression_ROOMSTATE(GimmickTarget sourceRarget, string sourcekey) {
 
             var value = new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(sourceRarget, sourcekey));
             var operatorExpression = new OperatorExpression(Operator.Not, null);
@@ -139,6 +139,11 @@ namespace Ponta.CCK_Generator.Base
         /* ---------------------------------------------------------------- */
         // Logic
         /* ---------------------------------------------------------------- */
+        public static Logic CreateLogic(params SingleStatement[] args) {
+            var list = CreateSingleStatementList(args);
+            return CreateLogic_AtMultiStatement(list);
+        }
+
         public static Logic CreateLogic_AtSingleStatement(SingleStatement singleStatement) {
 
             var logic = new Logic();

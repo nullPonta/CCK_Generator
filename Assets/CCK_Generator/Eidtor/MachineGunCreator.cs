@@ -1,6 +1,10 @@
-﻿using ClusterVR.CreatorKit.Trigger;
+﻿using ClusterVR.CreatorKit.Gimmick;
+using ClusterVR.CreatorKit.Operation;
+using ClusterVR.CreatorKit.Trigger;
 using Ponta.CCK_Generator.Base;
 using UnityEditor;
+
+using LPW = Ponta.CCK_Generator.Base.LogicParamWrapper;
 
 
 namespace Ponta.CCK_Generator
@@ -85,7 +89,24 @@ namespace Ponta.CCK_Generator
             var logicInfo = common.logicInfo;
 
             /* ItemLogic */
+            {
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "ShootUnlessOverheating");
 
+                /* Logic */
+                // if (!overheating) { SendSignal(Item, "Shoot") }
+                // if (!overheating) { SendSignal(Item, "shooting") }
+                // if (overheating) { SendSignal(Item, "Overheat") }
+                // DelayCoolDown = true
+                var logic = LogicParamGenerator.CreateLogic(
+                    LPW.SendSignalToSelf(Operator.Not, "overheating", "Shoot"),
+                    LPW.SendSignalToSelf(Operator.Not, "overheating", "shooting"),
+                    LPW.SendSignalToSelf("overheating", "Overheat"),
+                    LPW.SetValue("DelayCoolDown", new Base.ConstantValue(true)));
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
 
 
         }

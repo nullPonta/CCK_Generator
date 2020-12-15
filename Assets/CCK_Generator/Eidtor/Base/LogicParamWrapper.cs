@@ -9,6 +9,17 @@ namespace Ponta.CCK_Generator.Base {
     {
 
         public static SingleStatement SendSignalToSelf(
+            string key,
+            string sendKey) {
+
+            var statement = LogicParamGenerator.CreateSingleStatement_SETVALUE_FROM_KEY(
+                        CreateTargetState(ParameterType.Signal, sendKey),
+                        key);
+
+            return statement;
+        }
+
+        public static SingleStatement SendSignalToSelf(
             Operator ope,
             string key,
             string sendKey) {
@@ -16,7 +27,7 @@ namespace Ponta.CCK_Generator.Base {
             var sendSignal = LogicParamGenerator.CreateSingleStatement(
                         new TargetState(TargetStateTarget.Item, sendKey, ParameterType.Signal),
                         ope,
-                        LogicParamGenerator.CreateExpression_TARGET_OPERAND(GimmickTarget.Item, key));
+                        LogicParamGenerator.CreateExpression_ROOMSTATE(GimmickTarget.Item, key));
 
             return sendSignal;
         }
@@ -30,7 +41,7 @@ namespace Ponta.CCK_Generator.Base {
             var sendSignal = LogicParamGenerator.CreateSingleStatement_COMPARE(
                         new TargetState(TargetStateTarget.Item, sendKey, ParameterType.Signal),
                         ope,
-                        LogicParamGenerator.CreateExpression_TARGET_OPERAND(GimmickTarget.Item, compareKey),
+                        LogicParamGenerator.CreateExpression_ROOMSTATE(GimmickTarget.Item, compareKey),
                         LogicParamGenerator.CreateExpression_CONSTANT(constantValue));
 
             return sendSignal;
@@ -44,7 +55,7 @@ namespace Ponta.CCK_Generator.Base {
             var calculate = LogicParamGenerator.CreateSingleStatement_CALCULATE(
                         CreateTargetState(constantValue.Type, calculateKey),
                         ope,
-                        LogicParamGenerator.CreateExpression_TARGET_OPERAND(GimmickTarget.Item, calculateKey),
+                        LogicParamGenerator.CreateExpression_ROOMSTATE(GimmickTarget.Item, calculateKey),
                         LogicParamGenerator.CreateExpression_CONSTANT(constantValue));
 
             return calculate;
@@ -54,11 +65,11 @@ namespace Ponta.CCK_Generator.Base {
             string targetKey,
             ConstantValue constantValue) {
 
-            var sendSignal = LogicParamGenerator.CreateSingleStatement_SETVALUE(
+            var statement = LogicParamGenerator.CreateSingleStatement_SETVALUE(
                         CreateTargetState(constantValue.Type, targetKey),
                         constantValue);
 
-            return sendSignal;
+            return statement;
         }
 
         public static SingleStatement SetValueFromKey(
@@ -66,11 +77,11 @@ namespace Ponta.CCK_Generator.Base {
             ParameterType parameterType,
             string sourceKey) {
 
-            var sendSignal = LogicParamGenerator.CreateSingleStatement_SETVALUE_FROM_KEY(
+            var statement = LogicParamGenerator.CreateSingleStatement_SETVALUE_FROM_KEY(
                         CreateTargetState(parameterType, targetKey),
                         sourceKey);
 
-            return sendSignal;
+            return statement;
         }
 
         static TargetState CreateTargetState(ParameterType parameterType, string key) {
