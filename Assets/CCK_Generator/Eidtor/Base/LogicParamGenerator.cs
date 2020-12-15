@@ -141,20 +141,10 @@ namespace Ponta.CCK_Generator.Base
         /* ---------------------------------------------------------------- */
         public static Logic CreateLogic(params SingleStatement[] args) {
             var list = CreateSingleStatementList(args);
-            return CreateLogic_AtMultiStatement(list);
+            return CreateLogic(list);
         }
 
-        public static Logic CreateLogic_AtSingleStatement(SingleStatement singleStatement) {
-
-            var logic = new Logic();
-            var statement = new Statement(singleStatement);
-
-            logic.Statements.Add(statement);
-
-            return logic;
-        }
-
-        public static Logic CreateLogic_AtMultiStatement(List<SingleStatement> singleStatementList) {
+        public static Logic CreateLogic(List<SingleStatement> singleStatementList) {
 
             var logic = new Logic();
 
