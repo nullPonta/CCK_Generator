@@ -61,6 +61,10 @@ namespace Ponta.CCK_Generator.Base
                     var boolValue = typeValue.FindPropertyRelative("boolValue");
                     boolValue.boolValue = inputTrigger.RawValue.BoolValue;
                 }
+                else if (inputTrigger.Type == ParameterType.Float) {
+                    var floatValue = typeValue.FindPropertyRelative("floatValue");
+                    floatValue.floatValue = inputTrigger.RawValue.FloatValue;
+                }
                 else if (inputTrigger.Type == ParameterType.Integer) {
                     var intValue = typeValue.FindPropertyRelative("integerValue");
                     intValue.intValue = inputTrigger.RawValue.IntegerValue;

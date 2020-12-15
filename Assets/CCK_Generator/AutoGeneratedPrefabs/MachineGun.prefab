@@ -438,8 +438,14 @@ GameObject:
   - component: {fileID: 1692177822285777818}
   - component: {fileID: 1050156036196369343}
   - component: {fileID: 59814765935880097}
+  - component: {fileID: 4111800040476362572}
+  - component: {fileID: 8361178658686527761}
+  - component: {fileID: 8637304051687381589}
+  - component: {fileID: 8870377683603343634}
+  - component: {fileID: 2273192421485178144}
+  - component: {fileID: 1214368638572229767}
   m_Layer: 14
-  m_Name: Prototype_MachineGun
+  m_Name: MachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,6 +606,171 @@ MonoBehaviour:
     specifiedTargetItem: {fileID: 0}
     key: CoolDownUnlessShooting
     type: 0
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 0
+--- !u!114 &4111800040476362572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557c1287071b147459bb6f001560c6e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  rb: {fileID: 1692177822285777798}
+--- !u!114 &8361178658686527761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce108e3354c62c345a1cbcdf1f965e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movableItem: {fileID: 4111800040476362572}
+  grip: {fileID: 1692177822265465577}
+--- !u!114 &8637304051687381589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90a8458122ef47c3b840e286a75994a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  triggers:
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: heat
+    type: 2
+    value:
+      boolValue: 0
+      floatValue: 1
+      integerValue: 0
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: overheatThreshold
+    type: 2
+    value:
+      boolValue: 0
+      floatValue: 10
+      integerValue: 0
+--- !u!114 &8870377683603343634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaad96d2e18f43efbdaeaf6edf336ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbableItem: {fileID: 8361178658686527761}
+  triggers:
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: enableUI
+    type: 1
+    value:
+      boolValue: 1
+      floatValue: 0
+      integerValue: 0
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: OnGrab
+    type: 0
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 0
+--- !u!114 &2273192421485178144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a235adcd912f4bbb9b5397586de7af9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbableItem: {fileID: 8361178658686527761}
+  triggers:
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: enableUI
+    type: 1
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 0
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: using
+    type: 1
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 0
+--- !u!114 &1214368638572229767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93fd219114b4443c8e2d4bf3914ff43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  downTriggers:
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: ShootUnlessOverheating
+    type: 0
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 0
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: using
+    type: 1
+    value:
+      boolValue: 1
+      floatValue: 0
+      integerValue: 0
+  upTriggers:
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: using
+    type: 1
+    value:
+      boolValue: 0
+      floatValue: 0
+      integerValue: 0
+  - target: 0
+    specifiedTargetItem: {fileID: 0}
+    key: shooting
+    type: 1
     value:
       boolValue: 0
       floatValue: 0
@@ -1439,15 +1610,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e296b10aebf44c4ba8ceb0418610af2, type: 3}
---- !u!1 &848805850310865104 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e296b10aebf44c4ba8ceb0418610af2,
-    type: 3}
-  m_PrefabInstance: {fileID: 506366600736165249}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &39477694105987690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e296b10aebf44c4ba8ceb0418610af2,
+    type: 3}
+  m_PrefabInstance: {fileID: 506366600736165249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &848805850310865104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e296b10aebf44c4ba8ceb0418610af2,
     type: 3}
   m_PrefabInstance: {fileID: 506366600736165249}
   m_PrefabAsset: {fileID: 0}

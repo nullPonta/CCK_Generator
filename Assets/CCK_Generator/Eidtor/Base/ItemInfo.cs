@@ -30,12 +30,20 @@ namespace Ponta.CCK_Generator.Base
 
             /* MovableItem */
             if (isMovableItem) {
-                var movableItem = gameObject.AddComponent<MovableItem>();
+                var movableItem = gameObject.GetComponent<MovableItem>();
+
+                if (movableItem == null) {
+                    movableItem = gameObject.AddComponent<MovableItem>();
+                }
             }
 
             /* GrabbableItem */
             if (isGrabbableItem) {
-                var grabbableItem = gameObject.AddComponent<GrabbableItem>();
+                var grabbableItem = gameObject.GetComponent<GrabbableItem>();
+
+                if (grabbableItem == null) {
+                    grabbableItem = gameObject.AddComponent<GrabbableItem>();
+                }
 
                 var grip = gameObject.transform.Find("Grip");
                 if (grip != null) {

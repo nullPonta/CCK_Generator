@@ -28,50 +28,51 @@ namespace Ponta.CCK_Generator
         public HandGunDefinition() {
 
             /* Set path */
-            var prefabsPathController = common.prefabsPathController;
-
-            prefabsPathController.OutputPath = "HandGun.prefab";
-            prefabsPathController.PrototypePath = "Prototype_HandGun.prefab";
+            common.prefabsPathController.SetPath("Prototype_HandGun.prefab", "HandGun.prefab");
 
             /* ---------------------------------------------------------------- */
             // Define : Item
             /* ---------------------------------------------------------------- */
-            var itemInfo = common.itemInfo;
+            {
+                var itemInfo = common.itemInfo;
 
-            itemInfo.isItem = true;
-            itemInfo.itemName = "ハンドガン";
+                itemInfo.isItem = true;
+                itemInfo.itemName = "ハンドガン";
 
-            itemInfo.isMovableItem = true;
+                itemInfo.isMovableItem = true;
 
-            itemInfo.isGrabbableItem = true;
+                itemInfo.isGrabbableItem = true;
+            }
 
             /* ---------------------------------------------------------------- */
             // Define : Trigger
             /* ---------------------------------------------------------------- */
-            var triggerInfo = common.triggerInfo;
+            {
+                var triggerInfo = common.triggerInfo;
 
-            /* OnCreateItemTrigger */
-            var bullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "bullets", 6);
-            var maxBullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "maxBullets", 6);
+                /* OnCreateItemTrigger */
+                var bullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "bullets", 6);
+                var maxBullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "maxBullets", 6);
 
-            triggerInfo.AddOnCreateItemTrigger(bullets);
-            triggerInfo.AddOnCreateItemTrigger(maxBullets);
+                triggerInfo.AddOnCreateItemTrigger(bullets);
+                triggerInfo.AddOnCreateItemTrigger(maxBullets);
 
-            /* OnGrabItemTrigger */
-            var enableUI_On = triggerInfo.CreateTriggerParamBool(TriggerTarget.Item, null, "enableUI", true);
-            var reloaded = triggerInfo.CreateTriggerParamSignal(TriggerTarget.Item, null, "Reloaded");
+                /* OnGrabItemTrigger */
+                var enableUI_On = triggerInfo.CreateTriggerParamBool(TriggerTarget.Item, null, "enableUI", true);
+                var reloaded = triggerInfo.CreateTriggerParamSignal(TriggerTarget.Item, null, "Reloaded");
 
-            triggerInfo.AddOnGrabItemTrigger(enableUI_On);
-            triggerInfo.AddOnGrabItemTrigger(reloaded);
+                triggerInfo.AddOnGrabItemTrigger(enableUI_On);
+                triggerInfo.AddOnGrabItemTrigger(reloaded);
 
-            /* OnReleaseItemTrigger */
-            var enableUI_Off = triggerInfo.CreateTriggerParamBool(TriggerTarget.Item, null, "enableUI", false);
+                /* OnReleaseItemTrigger */
+                var enableUI_Off = triggerInfo.CreateTriggerParamBool(TriggerTarget.Item, null, "enableUI", false);
 
-            triggerInfo.AddOnReleaseItemTrigger(enableUI_Off);
+                triggerInfo.AddOnReleaseItemTrigger(enableUI_Off);
 
-            /* UseItemTrigger */
-            var shootUnlessReloading = triggerInfo.CreateTriggerParamSignal(TriggerTarget.Item, null, "ShootUnlessReloading");
-            triggerInfo.AddUseItemTrigger_Down(shootUnlessReloading);
+                /* UseItemTrigger */
+                var shootUnlessReloading = triggerInfo.CreateTriggerParamSignal(TriggerTarget.Item, null, "ShootUnlessReloading");
+                triggerInfo.AddUseItemTrigger_Down(shootUnlessReloading);
+            }
 
             /* ---------------------------------------------------------------- */
             // Define : Logic
@@ -141,6 +142,7 @@ namespace Ponta.CCK_Generator
             }
 
             {
+                // Reload -> Item Timer -> Reloaded
                 /* On receive */
                 var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "Reloaded");
 
