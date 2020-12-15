@@ -15,38 +15,29 @@ namespace Ponta.CCK_Generator
         [MenuItem("CCK_Generator/Create/HandGun")]
         public static void CreateHandGunPrefab() {
 
-            GameObjectCreator gameObjectCreator = new GameObjectCreator();
-            HandGunDefinition handGunDefinition = new HandGunDefinition();
-
-            var result = gameObjectCreator.Init(handGunDefinition.prefabsPathController);
-            if (!result) { return; }
-
-            handGunDefinition.AddComponent(gameObjectCreator);
-            gameObjectCreator.SaveAsPrefabAsset();
+            IDefinition definition = new HandGunDefinition();
+            definition.CreatePrefabFromPrototype();
         }
-
     }
 
-    public class HandGunDefinition
+    public class HandGunDefinition : IDefinition
     {
-        public PrefabsPathController prefabsPathController = new PrefabsPathController();
-
-        ItemInfo itemInfo = new ItemInfo();
-
-        TriggerInfo triggerInfo = new TriggerInfo();
-
-        LogicInfo logicInfo = new LogicInfo();
+        CommonInfo common = new CommonInfo();
 
 
         public HandGunDefinition() {
 
             /* Set path */
+            var prefabsPathController = common.prefabsPathController;
+
             prefabsPathController.OutputPath = "HandGun.prefab";
             prefabsPathController.PrototypePath = "Prototype_HandGun.prefab";
 
             /* ---------------------------------------------------------------- */
             // Define : Item
             /* ---------------------------------------------------------------- */
+            var itemInfo = common.itemInfo;
+
             itemInfo.isItem = true;
             itemInfo.itemName = "ハンドガン";
 
@@ -57,6 +48,7 @@ namespace Ponta.CCK_Generator
             /* ---------------------------------------------------------------- */
             // Define : Trigger
             /* ---------------------------------------------------------------- */
+            var triggerInfo = common.triggerInfo;
 
             /* OnCreateItemTrigger */
             var bullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "bullets", 6);
@@ -84,6 +76,7 @@ namespace Ponta.CCK_Generator
             /* ---------------------------------------------------------------- */
             // Define : Logic
             /* ---------------------------------------------------------------- */
+            var logicInfo = common.logicInfo;
 
             /* ItemLogic */
             {
@@ -169,15 +162,11 @@ namespace Ponta.CCK_Generator
 
         }
 
-        public void AddComponent(GameObjectCreator gameObjectCreator) {
-
-            gameObjectCreator.AddItem(itemInfo);
-            gameObjectCreator.AddTrigger(triggerInfo);
-
-            gameObjectCreator.AddLogic(logicInfo);
+        public void CreatePrefabFromPrototype() {
+            common.CreatePrefabFromPrototype();
         }
 
     }
-    
+
 }
 
