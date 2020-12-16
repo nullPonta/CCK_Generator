@@ -120,7 +120,7 @@ namespace Ponta.CCK_Generator
                 var logic = LogicParamGenerator.CreateLogic(
                     LPW.SetValue("CreateBullet", new Base.ConstantValue(true)),
                     LPW.SetValueByCalculate("heat", Operator.Multiply, new Base.ConstantValue(1.1f)),
-                    LPW.SendSignalToSelfByCompare(Operator.GreaterThanOrEqual, "heat", "overheatThreshold", "Overheat"));
+                    LPW.SendSignalToSelfByCompare("heat", Operator.GreaterThanOrEqual, "overheatThreshold", "Overheat"));
 
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));

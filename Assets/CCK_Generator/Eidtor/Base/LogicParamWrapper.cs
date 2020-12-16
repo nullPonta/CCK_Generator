@@ -38,31 +38,31 @@ namespace Ponta.CCK_Generator.Base {
         }
 
         public static SingleStatement SendSignalToSelfByCompare(
+            string compareKey_1st,
             Operator ope,
-            string compareKey,
-            ConstantValue constantValue,
+            ConstantValue constantValue_2nd,
             string sendKey) {
 
             var sendSignal = LPG.CreateSingleStatement_COMPARE(
                         new TargetState(TargetStateTarget.Item, sendKey, ParameterType.Signal),
                         ope,
-                        LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, compareKey),
-                        LPG.CreateExpression_CONSTANT(constantValue));
+                        LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, compareKey_1st),
+                        LPG.CreateExpression_CONSTANT(constantValue_2nd));
 
             return sendSignal;
         }
 
         public static SingleStatement SendSignalToSelfByCompare(
+            string compareKey_1st,
             Operator ope,
-            string compareKeyleft,
-            string compareKeyRight,
+            string compareKey_2nd,
             string sendKey) {
 
             var sendSignal = LPG.CreateSingleStatement_COMPARE(
                         new TargetState(TargetStateTarget.Item, sendKey, ParameterType.Signal),
                         ope,
-                        LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, compareKeyleft),
-                        LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, compareKeyRight));
+                        LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, compareKey_1st),
+                        LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, compareKey_2nd));
 
             return sendSignal;
         }

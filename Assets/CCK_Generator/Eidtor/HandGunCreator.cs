@@ -103,8 +103,8 @@ namespace Ponta.CCK_Generator
                 // if (bullets > 0) { SendSignal(Item, "Shoot") }
                 // if (bullets <= 0) { SendSignal(Item, "Reload") }
                 var logic = LogicParamGenerator.CreateLogic(
-                    LPW.SendSignalToSelfByCompare(Operator.GreaterThan, "bullets", new Base.ConstantValue(0), "Shoot"),
-                    LPW.SendSignalToSelfByCompare(Operator.LessThanOrEqual, "bullets", new Base.ConstantValue(0), "Reload"));
+                    LPW.SendSignalToSelfByCompare("bullets", Operator.GreaterThan, new Base.ConstantValue(0), "Shoot"),
+                    LPW.SendSignalToSelfByCompare("bullets", Operator.LessThanOrEqual, new Base.ConstantValue(0), "Reload"));
 
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
