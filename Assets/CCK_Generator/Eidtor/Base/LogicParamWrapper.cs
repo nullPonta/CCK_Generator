@@ -65,8 +65,8 @@ namespace Ponta.CCK_Generator.Base {
         }
 
         public static SingleStatement Calculate(
-            Operator ope,
             string targetKey,
+            Operator ope,
             ConstantValue constantValue) {
 
             var calculate = LPG.CreateSingleStatement_CALCULATE(
