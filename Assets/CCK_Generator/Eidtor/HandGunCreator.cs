@@ -117,7 +117,7 @@ namespace Ponta.CCK_Generator
                 /* Logic */
                 // bullets = bullets - 1
                 var logic = LogicParamGenerator.CreateLogic(
-                    LPW.Calculate(Operator.Subtract, "bullets", new Base.ConstantValue(1));
+                    LPW.Calculate(Operator.Subtract, "bullets", new Base.ConstantValue(1)));
 
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
