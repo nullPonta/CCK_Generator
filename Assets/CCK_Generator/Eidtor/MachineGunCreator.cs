@@ -119,7 +119,7 @@ namespace Ponta.CCK_Generator
                 // if (heat >= overheatThreshold) { SendSignal(Item, "Overheat") }
                 var logic = LogicParamGenerator.CreateLogic(
                     LPW.SetValue("CreateBullet", new Base.ConstantValue(true)),
-                    LPW.Calculate("heat", Operator.Multiply, new Base.ConstantValue(1.1f)),
+                    LPW.SetValueByCalculate("heat", Operator.Multiply, new Base.ConstantValue(1.1f)),
                     LPW.SendSignalToSelfByCompare(Operator.GreaterThanOrEqual, "heat", "overheatThreshold", "Overheat"));
 
                 /* LogicParam */
@@ -162,12 +162,13 @@ namespace Ponta.CCK_Generator
                 /* Logic */
                 // heat = heat - 1.0
                 // cooled = (heat <= 1)
-                // heat = Mex(heat, 1.0f)
+                // heat = Max(heat, 1.0f)
                 // StartCoolDown = !cooled
                 // overheating = Condition cooled ? false : overheating
                 var logic = LogicParamGenerator.CreateLogic(
-                    LPW.Calculate("heat", Operator.Subtract, new Base.ConstantValue(1.0f)),
-                    LPW.SetValueByCompare("cooled", ParameterType.Bool, "heat", Operator.LessThanOrEqual, new Base.ConstantValue(1.0f)));
+                    LPW.SetValueByCalculate("heat", Operator.Subtract, new Base.ConstantValue(1.0f)),
+                    LPW.SetValueByCompare("cooled", ParameterType.Bool, "heat", Operator.LessThanOrEqual, new Base.ConstantValue(1.0f))
+                    );
 
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));

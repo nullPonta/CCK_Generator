@@ -10,6 +10,9 @@ namespace Ponta.CCK_Generator.Base {
     public class LogicParamWrapper
     {
 
+        /* ---------------------------------------------------------------- */
+        // Send Signal
+        /* ---------------------------------------------------------------- */
         public static SingleStatement SendSignalToSelf(
             string key,
             string sendKey) {
@@ -64,7 +67,10 @@ namespace Ponta.CCK_Generator.Base {
             return sendSignal;
         }
 
-        public static SingleStatement Calculate(
+        /* ---------------------------------------------------------------- */
+        // SetValue
+        /* ---------------------------------------------------------------- */
+        public static SingleStatement SetValueByCalculate(
             string targetKey,
             Operator ope,
             ConstantValue constantValue) {
