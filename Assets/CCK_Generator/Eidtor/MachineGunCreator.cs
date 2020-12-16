@@ -1,4 +1,5 @@
-﻿using ClusterVR.CreatorKit.Gimmick;
+﻿using ClusterVR.CreatorKit;
+using ClusterVR.CreatorKit.Gimmick;
 using ClusterVR.CreatorKit.Operation;
 using ClusterVR.CreatorKit.Trigger;
 using Ponta.CCK_Generator.Base;
@@ -107,6 +108,71 @@ namespace Ponta.CCK_Generator
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
             }
+
+            {
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "Shoot");
+
+                /* Logic */
+                // CreateBullet = true
+                // heat = heat * 1.1
+                // if (heat >= overheatThreshold) { SendSignal(Item, "Overheat") }
+                var logic = LogicParamGenerator.CreateLogic(
+                    LPW.SetValue("CreateBullet", new Base.ConstantValue(true)),
+                    LPW.Calculate(Operator.Multiply, "heat", new Base.ConstantValue(1.1f)),
+                    LPW.SendSignalToSelfByCompare(Operator.GreaterThanOrEqual, "heat", "overheatThreshold", "Overheat"));
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
+
+            {
+                // ShootUnlessOverheating -> Item Timer -> ShootIfUsing
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "ShootIfUsing");
+
+                /* Logic */
+                // if (using) { SendSignal(Item, "Overheat") }
+                var logic = LogicParamGenerator.CreateLogic(
+                    LPW.SendSignalToSelf("using", "ShootUnlessOverheating"));
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
+
+            {
+                // DelayCoolDown -> Item Timer -> StartCoolDown, PlayCoolDownSound
+                // StartCoolDown -> Item Timer -> CoolDownUnlessShooting
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "CoolDownUnlessShooting");
+
+                /* Logic */
+                // if (!shooting) { SendSignal(Item, "CoolDown") }
+                var logic = LogicParamGenerator.CreateLogic(
+                    LPW.SendSignalToSelf(Operator.Not, "shooting", "CoolDown"));
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
+
+            {
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "CoolDown");
+
+                /* Logic */
+                // heat = heat - 1
+                // cooled = (heat <= 1)
+                // heat = Mex(heat, 1.0f)
+                // StartCoolDown = !cooled
+                // overheating = Condition cooled ? false : overheating
+                var logic = LogicParamGenerator.CreateLogic(
+                    LPW.Calculate(Operator.Subtract, "heat", new Base.ConstantValue(1)),
+                    LPW.SetValueByCompare("cooled", ParameterType.Bool, "heat", Operator.LessThanOrEqual, new Base.ConstantValue(1.0f)));
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
+
 
 
         }

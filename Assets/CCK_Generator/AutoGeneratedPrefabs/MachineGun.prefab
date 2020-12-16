@@ -438,13 +438,17 @@ GameObject:
   - component: {fileID: 1692177822285777818}
   - component: {fileID: 1050156036196369343}
   - component: {fileID: 59814765935880097}
-  - component: {fileID: 2534516017669188257}
-  - component: {fileID: 8874780416809216240}
-  - component: {fileID: 8911115218115492197}
-  - component: {fileID: 6893056131818187562}
-  - component: {fileID: 5187372982448163701}
-  - component: {fileID: 8612826756163886380}
-  - component: {fileID: 8967119336594617566}
+  - component: {fileID: 1719603885025779257}
+  - component: {fileID: 1129691166810923783}
+  - component: {fileID: 152312974393257915}
+  - component: {fileID: 4137867178628699447}
+  - component: {fileID: 7484983657099256522}
+  - component: {fileID: 4896477072890028624}
+  - component: {fileID: 7202458620350921842}
+  - component: {fileID: 3055368058033359089}
+  - component: {fileID: 5529689459251283533}
+  - component: {fileID: 2078140744597551700}
+  - component: {fileID: 909866999539025792}
   m_Layer: 14
   m_Name: MachineGun
   m_TagString: Untagged
@@ -611,7 +615,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &2534516017669188257
+--- !u!114 &1719603885025779257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -625,7 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 1692177822285777797}
   rb: {fileID: 1692177822285777798}
---- !u!114 &8874780416809216240
+--- !u!114 &1129691166810923783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -637,9 +641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce108e3354c62c345a1cbcdf1f965e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movableItem: {fileID: 2534516017669188257}
+  movableItem: {fileID: 1719603885025779257}
   grip: {fileID: 1692177822265465577}
---- !u!114 &8911115218115492197
+--- !u!114 &152312974393257915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -669,7 +673,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 10
       integerValue: 0
---- !u!114 &6893056131818187562
+--- !u!114 &4137867178628699447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -681,7 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaad96d2e18f43efbdaeaf6edf336ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableItem: {fileID: 8874780416809216240}
+  grabbableItem: {fileID: 1129691166810923783}
   triggers:
   - target: 0
     specifiedTargetItem: {fileID: 0}
@@ -699,7 +703,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &5187372982448163701
+--- !u!114 &7484983657099256522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -711,7 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a235adcd912f4bbb9b5397586de7af9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableItem: {fileID: 8874780416809216240}
+  grabbableItem: {fileID: 1129691166810923783}
   triggers:
   - target: 0
     specifiedTargetItem: {fileID: 0}
@@ -729,7 +733,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &8612826756163886380
+--- !u!114 &4896477072890028624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -776,7 +780,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &8967119336594617566
+--- !u!114 &7202458620350921842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -923,6 +927,372 @@ MonoBehaviour:
                   type: 1
                   boolValue: 0
                   floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+--- !u!114 &3055368058033359089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06d8dc2ce9e442ab2712de694945b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  key:
+    target: 0
+    key: Shoot
+  logic:
+    statements:
+    - singleStatement:
+        targetState:
+          target: 0
+          key: CreateBullet
+          parameterType: 1
+        expression:
+          type: 0
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 1
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 0
+            operands:
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+    - singleStatement:
+        targetState:
+          target: 0
+          key: heat
+          parameterType: 2
+        expression:
+          type: 1
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 3
+            operands:
+            - type: 0
+              value:
+                type: 1
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: heat
+              operatorExpression:
+                operator: 0
+                operands: []
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 2
+                  boolValue: 0
+                  floatValue: 1.1
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+    - singleStatement:
+        targetState:
+          target: 0
+          key: Overheat
+          parameterType: 0
+        expression:
+          type: 1
+          value:
+            type: 1
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 10
+            operands:
+            - type: 0
+              value:
+                type: 1
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: heat
+              operatorExpression:
+                operator: 0
+                operands: []
+            - type: 0
+              value:
+                type: 1
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: overheatThreshold
+              operatorExpression:
+                operator: 0
+                operands: []
+--- !u!114 &5529689459251283533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06d8dc2ce9e442ab2712de694945b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  key:
+    target: 0
+    key: ShootIfUsing
+  logic:
+    statements:
+    - singleStatement:
+        targetState:
+          target: 0
+          key: ShootUnlessOverheating
+          parameterType: 0
+        expression:
+          type: 0
+          value:
+            type: 1
+            constant:
+              type: 0
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: using
+          operatorExpression:
+            operator: 0
+            operands:
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+--- !u!114 &2078140744597551700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06d8dc2ce9e442ab2712de694945b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  key:
+    target: 0
+    key: CoolDownUnlessShooting
+  logic:
+    statements:
+    - singleStatement:
+        targetState:
+          target: 0
+          key: CoolDown
+          parameterType: 0
+        expression:
+          type: 1
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 0
+            operands:
+            - type: 0
+              value:
+                type: 1
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: shooting
+              operatorExpression:
+                operator: 0
+                operands: []
+--- !u!114 &909866999539025792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06d8dc2ce9e442ab2712de694945b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  key:
+    target: 0
+    key: CoolDown
+  logic:
+    statements:
+    - singleStatement:
+        targetState:
+          target: 0
+          key: heat
+          parameterType: 3
+        expression:
+          type: 1
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 4
+            operands:
+            - type: 0
+              value:
+                type: 1
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: heat
+              operatorExpression:
+                operator: 0
+                operands: []
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 3
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 1
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+    - singleStatement:
+        targetState:
+          target: 0
+          key: cooled
+          parameterType: 1
+        expression:
+          type: 1
+          value:
+            type: 1
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 12
+            operands:
+            - type: 0
+              value:
+                type: 1
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: heat
+              operatorExpression:
+                operator: 0
+                operands: []
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 2
+                  boolValue: 0
+                  floatValue: 1
                   integerValue: 0
                 sourceState:
                   target: 0
@@ -2306,15 +2676,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42ceb14b7cccfa444856225df2457904, type: 3}
---- !u!1 &8541416792691287735 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3822620929238407651, guid: 42ceb14b7cccfa444856225df2457904,
-    type: 3}
-  m_PrefabInstance: {fileID: 4865462282505764692}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5625725017710007974 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 979268151608027634, guid: 42ceb14b7cccfa444856225df2457904,
+    type: 3}
+  m_PrefabInstance: {fileID: 4865462282505764692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8541416792691287735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3822620929238407651, guid: 42ceb14b7cccfa444856225df2457904,
     type: 3}
   m_PrefabInstance: {fileID: 4865462282505764692}
   m_PrefabAsset: {fileID: 0}

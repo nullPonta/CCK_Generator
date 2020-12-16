@@ -104,12 +104,12 @@ namespace Ponta.CCK_Generator.Base
 
         public static SingleStatement CreateSingleStatement_SETVALUE(
             TargetState target,
-            ConstantValue constantValue) {
+            ExpressionValue value) {
 
             /* Expression */
             var expression = new Expression(
                 ExpressionType.Value,
-                CreateExpressionValue_SETVALUE(constantValue),
+                value,
                 CreateOperatorExpression(
                     Operator.Not,
                     CreateExpression_CONSTANT(new ConstantValue(false))));
@@ -128,6 +128,24 @@ namespace Ponta.CCK_Generator.Base
                 CreateOperatorExpression(
                     Operator.Not,
                     CreateExpression_CONSTANT(new ConstantValue(false))));
+
+            return new SingleStatement(target, expression);
+        }
+
+        public static SingleStatement CreateSingleStatement_SETVALUE_BY_COMPARE(
+            TargetState target,
+            Expression inExpression_1st,
+            Operator ope,
+            Expression inExpression_2nd) {
+
+            /* Expression */
+            var expression = new Expression(
+                ExpressionType.OperatorExpression,
+                CreateExpressionValue_COMPARE(),
+                CreateOperatorExpression(
+                    ope,
+                    inExpression_1st,
+                    inExpression_2nd));
 
             return new SingleStatement(target, expression);
         }
