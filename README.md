@@ -19,6 +19,13 @@
 ・処理複製の容易化
 
 
+## 使い方
+
+「Assets/CCK_Generator/Eidtor/」直下の「HandGunCreator.cs」のように定義できます。
+
+「PrototypePrefabs」内のプレファブから、実際に配置するプレファブを生成します。
+
+
 ## テンプレートの一覧
 
 ### シューター
