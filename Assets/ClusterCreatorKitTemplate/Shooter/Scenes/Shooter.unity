@@ -6568,6 +6568,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 194062114339130376, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1692177822285777819, guid: 10719ccafc4baf64a882935aff9fe1c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6628,6 +6633,71 @@ PrefabInstance:
       propertyPath: m_Name
       value: MachineGun
       objectReference: {fileID: 0}
+    - target: {fileID: 1826115385616142823, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[2].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321120272884116750, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[2].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353991326076609300, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[2].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850907857329169171, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[2].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670505734149192850, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512535473496323657, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[2].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529689459251283533, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877878349706154315, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086127992044806748, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[2].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404697315138758061, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983099457700523519, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202458620350921842, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[2].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737326593681029176, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[0].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8148062172116745083, guid: 10719ccafc4baf64a882935aff9fe1c3,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -6657,6 +6727,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526428521132997210, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[2].singleStatement.expression.value.constant.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967119336594617566, guid: 10719ccafc4baf64a882935aff9fe1c3,
+        type: 3}
+      propertyPath: logic.statements.Array.data[2].singleStatement.expression.value.constant.type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9213633735721027577, guid: 10719ccafc4baf64a882935aff9fe1c3,
         type: 3}

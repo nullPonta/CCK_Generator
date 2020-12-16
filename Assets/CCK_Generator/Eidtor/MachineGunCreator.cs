@@ -163,12 +163,13 @@ namespace Ponta.CCK_Generator
                 // heat = heat - 1.0
                 // cooled = (heat <= 1)
                 // heat = Max(heat, 1.0f)
-                // StartCoolDown = !cooled
+                // if (!cooled) { SendSignal(Item, "StartCoolDown") }
                 // overheating = Condition cooled ? false : overheating
                 var logic = LogicParamGenerator.CreateLogic(
                     LPW.SetValueByCalculate("heat", Operator.Subtract, new Base.ConstantValue(1.0f)),
-                    LPW.SetValueByCompare("cooled", ParameterType.Bool, "heat", Operator.LessThanOrEqual, new Base.ConstantValue(1.0f))
-                    );
+                    LPW.SetValueByCompare("cooled", ParameterType.Bool, "heat", Operator.LessThanOrEqual, new Base.ConstantValue(1.0f)),
+                    LPW.SetValueByCalculate("heat", ParameterType.Float, Operator.Max, "heat", new Base.ConstantValue(1.0f)),
+                    LPW.SendSignalToSelf(Operator.Not, "cooled", "StartCoolDown"));
 
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));

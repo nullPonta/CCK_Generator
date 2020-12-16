@@ -1,7 +1,7 @@
 ﻿using ClusterVR.CreatorKit;
 using ClusterVR.CreatorKit.Gimmick;
 using ClusterVR.CreatorKit.Operation;
-
+using UnityEngine;
 using LPG = Ponta.CCK_Generator.Base.LogicParamGenerator;
 
 
@@ -43,6 +43,8 @@ namespace Ponta.CCK_Generator.Base {
             ConstantValue constantValue_2nd,
             string sendKey) {
 
+            OperatorValidator.Validate_IsCompareOperator(ope);
+
             var sendSignal = LPG.CreateSingleStatement_COMPARE(
                         new TargetState(TargetStateTarget.Item, sendKey, ParameterType.Signal),
                         ope,
@@ -57,6 +59,8 @@ namespace Ponta.CCK_Generator.Base {
             Operator ope,
             string compareKey_2nd,
             string sendKey) {
+
+            OperatorValidator.Validate_IsCompareOperator(ope);
 
             var sendSignal = LPG.CreateSingleStatement_COMPARE(
                         new TargetState(TargetStateTarget.Item, sendKey, ParameterType.Signal),
@@ -75,11 +79,31 @@ namespace Ponta.CCK_Generator.Base {
             Operator ope,
             ConstantValue constantValue) {
 
+            OperatorValidator.Validate_IsCalculateOperator(ope);
+
             var calculate = LPG.CreateSingleStatement_CALCULATE(
                         CreateTargetState(constantValue.Type, targetKey),
                         ope,
                         LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, targetKey),
                         LPG.CreateExpression_CONSTANT(constantValue));
+
+            return calculate;
+        }
+
+        public static SingleStatement SetValueByCalculate(
+            string targetKey,
+            ParameterType targetType,
+            Operator ope,
+            string key_1st,
+            ConstantValue constantValue_2nd) {
+
+            OperatorValidator.Validate_IsCalculateOperator(ope);
+
+            var calculate = LPG.CreateSingleStatement_CALCULATE(
+                        CreateTargetState(targetType, targetKey),
+                        ope,
+                        LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, key_1st),
+                        LPG.CreateExpression_CONSTANT(constantValue_2nd));
 
             return calculate;
         }
@@ -113,6 +137,8 @@ namespace Ponta.CCK_Generator.Base {
             string key_1st,
             Operator ope,
             ConstantValue constantValue_2nd) {
+
+            OperatorValidator.Validate_IsCompareOperator(ope);
 
             var statement = LPG.CreateSingleStatement_SETVALUE_BY_COMPARE(
                         CreateTargetState(targetType, targetKey),
