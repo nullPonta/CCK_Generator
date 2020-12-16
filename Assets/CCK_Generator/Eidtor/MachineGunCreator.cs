@@ -98,12 +98,12 @@ namespace Ponta.CCK_Generator
                 // if (!overheating) { SendSignal(Item, "Shoot") }
                 // if (!overheating) { SendSignal(Item, "shooting") }
                 // if (overheating) { SendSignal(Item, "Overheat") }
-                // DelayCoolDown = true
+                // if (true) { SendSignal(Item, "DelayCoolDown") }
                 var logic = LogicParamGenerator.CreateLogic(
                     LPW.SendSignalToSelf(Operator.Not, "overheating", "Shoot"),
                     LPW.SendSignalToSelf(Operator.Not, "overheating", "shooting"),
                     LPW.SendSignalToSelf("overheating", "Overheat"),
-                    LPW.SetValue("DelayCoolDown", new Base.ConstantValue(true)));
+                    LPW.SendSignalToSelf("DelayCoolDown"));
 
                 /* LogicParam */
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
@@ -114,11 +114,11 @@ namespace Ponta.CCK_Generator
                 var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "Shoot");
 
                 /* Logic */
-                // CreateBullet = true
+                // if (true) { SendSignal(Item, "CreateBullet") }
                 // heat = heat * 1.1
                 // if (heat >= overheatThreshold) { SendSignal(Item, "Overheat") }
                 var logic = LogicParamGenerator.CreateLogic(
-                    LPW.SetValue("CreateBullet", new Base.ConstantValue(true)),
+                    LPW.SendSignalToSelf("CreateBullet"),
                     LPW.SetValueByCalculate("heat", Operator.Multiply, new Base.ConstantValue(1.1f)),
                     LPW.SendSignalToSelfByCompare("heat", Operator.GreaterThanOrEqual, "overheatThreshold", "Overheat"));
 
@@ -175,7 +175,22 @@ namespace Ponta.CCK_Generator
                 logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
             }
 
+            {
+                /* On receive */
+                var onReceive = LogicParamGenerator.CreateOnReceiveKey(GimmickTarget.Item, "Overheat");
 
+                /* Logic */
+                // overheating = true
+                // shooting = false
+                // cooled = false
+                var logic = LogicParamGenerator.CreateLogic(
+                    LPW.SetValue("overheating", new Base.ConstantValue(true)),
+                    LPW.SetValue("shooting", new Base.ConstantValue(false)),
+                    LPW.SetValue("cooled", new Base.ConstantValue(false)));
+
+                /* LogicParam */
+                logicInfo.AddItemLogicParam(new LogicParam(onReceive, logic));
+            }
 
         }
 

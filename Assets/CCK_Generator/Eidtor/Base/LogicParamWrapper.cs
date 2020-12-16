@@ -14,6 +14,16 @@ namespace Ponta.CCK_Generator.Base {
         // Send Signal
         /* ---------------------------------------------------------------- */
         public static SingleStatement SendSignalToSelf(
+            string sendKey) {
+
+            var sendSignal = LPG.CreateSingleStatement_SETVALUE(
+                        new TargetState(TargetStateTarget.Item, sendKey, ParameterType.Signal),
+                        LPG.CreateExpressionValue_SETVALUE(new Base.ConstantValue(true)));
+
+            return sendSignal;
+        }
+
+        public static SingleStatement SendSignalToSelf(
             string key,
             string sendKey) {
 

@@ -434,21 +434,22 @@ GameObject:
   - component: {fileID: 1692177822285777819}
   - component: {fileID: 1692177822285777798}
   - component: {fileID: 1692177822285777797}
-  - component: {fileID: 1692177822285777822}
   - component: {fileID: 1692177822285777818}
+  - component: {fileID: 1692177822285777822}
   - component: {fileID: 1050156036196369343}
   - component: {fileID: 59814765935880097}
-  - component: {fileID: 8224871102772894306}
-  - component: {fileID: 8649617946173598807}
-  - component: {fileID: 1302289521370989825}
-  - component: {fileID: 5249221500553183676}
-  - component: {fileID: 2345950842379715777}
-  - component: {fileID: 1377131356795990866}
-  - component: {fileID: 7013098921654840552}
-  - component: {fileID: 1760886925048444904}
-  - component: {fileID: 6073266223672605502}
-  - component: {fileID: 1657444696966943508}
-  - component: {fileID: 959857014157638017}
+  - component: {fileID: 6502436252964417429}
+  - component: {fileID: 7950291525162769653}
+  - component: {fileID: 4249042035967008180}
+  - component: {fileID: 7203393486316041994}
+  - component: {fileID: 7981352109661469861}
+  - component: {fileID: 3802911470954124512}
+  - component: {fileID: 9216396799130724803}
+  - component: {fileID: 7512570694148900674}
+  - component: {fileID: 8115538052138640634}
+  - component: {fileID: 4521619433277861670}
+  - component: {fileID: 8331861020154726798}
+  - component: {fileID: 1650207791092552795}
   m_Layer: 14
   m_Name: MachineGun
   m_TagString: Untagged
@@ -508,6 +509,27 @@ MonoBehaviour:
   id:
     value: 9106772565670868851
   itemName: "\u30DE\u30B7\u30F3\u30AC\u30F3"
+--- !u!114 &1692177822285777818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2d50bc3e074e22919ff17b806ad61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  key:
+    target: 0
+    key: CreateBullet
+  itemTemplate: {fileID: -2917047267138979866, guid: 3c1a5c6e8fd913c41920354505ffe75b,
+    type: 3}
+  itemTemplateId:
+    value: 8885808877034398130
+  spawnPoint: {fileID: 1692177823001695442}
 --- !u!114 &1692177822285777822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,27 +556,6 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &1692177822285777818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692177822285777820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a2d50bc3e074e22919ff17b806ad61e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 1692177822285777797}
-  key:
-    target: 0
-    key: CreateBullet
-  itemTemplate: {fileID: -2917047267138979866, guid: 3c1a5c6e8fd913c41920354505ffe75b,
-    type: 3}
-  itemTemplateId:
-    value: 8885808877034398130
-  spawnPoint: {fileID: 1692177823001695442}
 --- !u!114 &1050156036196369343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,7 +616,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &8224871102772894306
+--- !u!114 &6502436252964417429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -629,7 +630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 1692177822285777797}
   rb: {fileID: 1692177822285777798}
---- !u!114 &8649617946173598807
+--- !u!114 &7950291525162769653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -641,9 +642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce108e3354c62c345a1cbcdf1f965e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movableItem: {fileID: 8224871102772894306}
+  movableItem: {fileID: 6502436252964417429}
   grip: {fileID: 1692177822265465577}
---- !u!114 &1302289521370989825
+--- !u!114 &4249042035967008180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -673,7 +674,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 10
       integerValue: 0
---- !u!114 &5249221500553183676
+--- !u!114 &7203393486316041994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -685,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaad96d2e18f43efbdaeaf6edf336ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableItem: {fileID: 8649617946173598807}
+  grabbableItem: {fileID: 7950291525162769653}
   triggers:
   - target: 0
     specifiedTargetItem: {fileID: 0}
@@ -703,7 +704,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &2345950842379715777
+--- !u!114 &7981352109661469861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -715,7 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a235adcd912f4bbb9b5397586de7af9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableItem: {fileID: 8649617946173598807}
+  grabbableItem: {fileID: 7950291525162769653}
   triggers:
   - target: 0
     specifiedTargetItem: {fileID: 0}
@@ -733,7 +734,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &1377131356795990866
+--- !u!114 &3802911470954124512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -780,7 +781,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &7013098921654840552
+--- !u!114 &9216396799130724803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -904,7 +905,7 @@ MonoBehaviour:
         targetState:
           target: 0
           key: DelayCoolDown
-          parameterType: 1
+          parameterType: 0
         expression:
           type: 0
           value:
@@ -934,7 +935,7 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &1760886925048444904
+--- !u!114 &7512570694148900674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -956,7 +957,7 @@ MonoBehaviour:
         targetState:
           target: 0
           key: CreateBullet
-          parameterType: 1
+          parameterType: 0
         expression:
           type: 0
           value:
@@ -1082,7 +1083,7 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &6073266223672605502
+--- !u!114 &8115538052138640634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1134,7 +1135,7 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &1657444696966943508
+--- !u!114 &4521619433277861670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1186,7 +1187,7 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &959857014157638017
+--- !u!114 &8331861020154726798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1379,6 +1380,126 @@ MonoBehaviour:
                 sourceState:
                   target: 0
                   key: cooled
+              operatorExpression:
+                operator: 0
+                operands: []
+--- !u!114 &1650207791092552795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06d8dc2ce9e442ab2712de694945b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  key:
+    target: 0
+    key: Overheat
+  logic:
+    statements:
+    - singleStatement:
+        targetState:
+          target: 0
+          key: overheating
+          parameterType: 1
+        expression:
+          type: 0
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 1
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 0
+            operands:
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+    - singleStatement:
+        targetState:
+          target: 0
+          key: shooting
+          parameterType: 1
+        expression:
+          type: 0
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 0
+            operands:
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+    - singleStatement:
+        targetState:
+          target: 0
+          key: cooled
+          parameterType: 1
+        expression:
+          type: 0
+          value:
+            type: 0
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 0
+            operands:
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
               operatorExpression:
                 operator: 0
                 operands: []

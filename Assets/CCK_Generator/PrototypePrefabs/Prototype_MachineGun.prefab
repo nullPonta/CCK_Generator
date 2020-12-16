@@ -434,8 +434,8 @@ GameObject:
   - component: {fileID: 1692177822285777819}
   - component: {fileID: 1692177822285777798}
   - component: {fileID: 1692177822285777797}
-  - component: {fileID: 1692177822285777822}
   - component: {fileID: 1692177822285777818}
+  - component: {fileID: 1692177822285777822}
   - component: {fileID: 1050156036196369343}
   - component: {fileID: 59814765935880097}
   m_Layer: 14
@@ -497,6 +497,27 @@ MonoBehaviour:
   id:
     value: 9106772565670868851
   itemName: "\u30DE\u30B7\u30F3\u30AC\u30F3"
+--- !u!114 &1692177822285777818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692177822285777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2d50bc3e074e22919ff17b806ad61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1692177822285777797}
+  key:
+    target: 0
+    key: CreateBullet
+  itemTemplate: {fileID: -2917047267138979866, guid: 3c1a5c6e8fd913c41920354505ffe75b,
+    type: 3}
+  itemTemplateId:
+    value: 8885808877034398130
+  spawnPoint: {fileID: 1692177823001695442}
 --- !u!114 &1692177822285777822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,27 +544,6 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &1692177822285777818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692177822285777820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a2d50bc3e074e22919ff17b806ad61e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 1692177822285777797}
-  key:
-    target: 0
-    key: CreateBullet
-  itemTemplate: {fileID: -2917047267138979866, guid: 3c1a5c6e8fd913c41920354505ffe75b,
-    type: 3}
-  itemTemplateId:
-    value: 8885808877034398130
-  spawnPoint: {fileID: 1692177823001695442}
 --- !u!114 &1050156036196369343
 MonoBehaviour:
   m_ObjectHideFlags: 0
