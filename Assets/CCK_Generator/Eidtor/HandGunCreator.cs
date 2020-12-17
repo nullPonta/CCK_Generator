@@ -6,6 +6,7 @@ using Ponta.CCK_Generator.Base;
 using System.Collections.Generic;
 using UnityEditor;
 
+using LPG = Ponta.CCK_Generator.Base.TriggerParamGenerator;
 using LPW = Ponta.CCK_Generator.Base.LogicParamWrapper;
 
 
@@ -53,27 +54,18 @@ namespace Ponta.CCK_Generator
                 var triggerInfo = common.triggerInfo;
 
                 /* OnCreateItemTrigger */
-                var bullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "bullets", 6);
-                var maxBullets = triggerInfo.CreateTriggerParamInteger(TriggerTarget.Item, null, "maxBullets", 6);
-
-                triggerInfo.AddOnCreateItemTrigger(bullets);
-                triggerInfo.AddOnCreateItemTrigger(maxBullets);
+                triggerInfo.AddOnCreateItemTrigger(LPG.CreateInteger(TriggerTarget.Item, null, "bullets", 6));
+                triggerInfo.AddOnCreateItemTrigger(LPG.CreateInteger(TriggerTarget.Item, null, "maxBullets", 6));
 
                 /* OnGrabItemTrigger */
-                var enableUI_On = triggerInfo.CreateTriggerParamBool(TriggerTarget.Item, null, "enableUI", true);
-                var reloaded = triggerInfo.CreateTriggerParamSignal(TriggerTarget.Item, null, "Reloaded");
-
-                triggerInfo.AddOnGrabItemTrigger(enableUI_On);
-                triggerInfo.AddOnGrabItemTrigger(reloaded);
+                triggerInfo.AddOnGrabItemTrigger(LPG.CreateBool(TriggerTarget.Item, null, "enableUI", true));
+                triggerInfo.AddOnGrabItemTrigger(LPG.CreateSignal(TriggerTarget.Item, null, "Reloaded"));
 
                 /* OnReleaseItemTrigger */
-                var enableUI_Off = triggerInfo.CreateTriggerParamBool(TriggerTarget.Item, null, "enableUI", false);
-
-                triggerInfo.AddOnReleaseItemTrigger(enableUI_Off);
+                triggerInfo.AddOnReleaseItemTrigger(LPG.CreateBool(TriggerTarget.Item, null, "enableUI", false));
 
                 /* UseItemTrigger */
-                var shootUnlessReloading = triggerInfo.CreateTriggerParamSignal(TriggerTarget.Item, null, "ShootUnlessReloading");
-                triggerInfo.AddUseItemTrigger_Down(shootUnlessReloading);
+                triggerInfo.AddUseItemTrigger_Down(LPG.CreateSignal(TriggerTarget.Item, null, "ShootUnlessReloading"));
             }
 
             /* ---------------------------------------------------------------- */
