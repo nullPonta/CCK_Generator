@@ -159,6 +159,22 @@ namespace Ponta.CCK_Generator.Base {
             return statement;
         }
 
+        public static SingleStatement SetValueByCondition(
+            string targetKey,
+            ParameterType targetType,
+            string key_1st,
+            ConstantValue constantValue_2nd,
+            string key_3rd) {
+
+            var statement = LPG.CreateSingleStatement_SETVALUE_BY_CONDITION(
+                        CreateTargetState(targetType, targetKey),
+                        LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, key_1st),
+                        LPG.CreateExpression_CONSTANT(constantValue_2nd),
+                        LPG.CreateExpression_ROOMSTATE(GimmickTarget.Item, key_3rd));
+
+            return statement;
+        }
+
         static TargetState CreateTargetState(ParameterType parameterType, string key) {
             return new TargetState(TargetStateTarget.Item, key, parameterType);
         }

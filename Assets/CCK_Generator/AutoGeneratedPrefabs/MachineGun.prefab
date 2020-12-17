@@ -438,18 +438,18 @@ GameObject:
   - component: {fileID: 1692177822285777822}
   - component: {fileID: 1050156036196369343}
   - component: {fileID: 59814765935880097}
-  - component: {fileID: 6502436252964417429}
-  - component: {fileID: 7950291525162769653}
-  - component: {fileID: 4249042035967008180}
-  - component: {fileID: 7203393486316041994}
-  - component: {fileID: 7981352109661469861}
-  - component: {fileID: 3802911470954124512}
-  - component: {fileID: 9216396799130724803}
-  - component: {fileID: 7512570694148900674}
-  - component: {fileID: 8115538052138640634}
-  - component: {fileID: 4521619433277861670}
-  - component: {fileID: 8331861020154726798}
-  - component: {fileID: 1650207791092552795}
+  - component: {fileID: 2533382333301320678}
+  - component: {fileID: 1473169372143345959}
+  - component: {fileID: 4634444689075661524}
+  - component: {fileID: 8545911039266481378}
+  - component: {fileID: 2832832271701162373}
+  - component: {fileID: 1171525236963592032}
+  - component: {fileID: 6631500388744009443}
+  - component: {fileID: 7390002524635790930}
+  - component: {fileID: 599274570380203628}
+  - component: {fileID: 6949748797311471751}
+  - component: {fileID: 3876379264607311364}
+  - component: {fileID: 5343452089843603062}
   m_Layer: 14
   m_Name: MachineGun
   m_TagString: Untagged
@@ -616,7 +616,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &6502436252964417429
+--- !u!114 &2533382333301320678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -630,7 +630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 1692177822285777797}
   rb: {fileID: 1692177822285777798}
---- !u!114 &7950291525162769653
+--- !u!114 &1473169372143345959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -642,9 +642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce108e3354c62c345a1cbcdf1f965e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movableItem: {fileID: 6502436252964417429}
+  movableItem: {fileID: 2533382333301320678}
   grip: {fileID: 1692177822265465577}
---- !u!114 &4249042035967008180
+--- !u!114 &4634444689075661524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -674,7 +674,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 10
       integerValue: 0
---- !u!114 &7203393486316041994
+--- !u!114 &8545911039266481378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaad96d2e18f43efbdaeaf6edf336ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableItem: {fileID: 7950291525162769653}
+  grabbableItem: {fileID: 1473169372143345959}
   triggers:
   - target: 0
     specifiedTargetItem: {fileID: 0}
@@ -704,7 +704,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &7981352109661469861
+--- !u!114 &2832832271701162373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -716,7 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a235adcd912f4bbb9b5397586de7af9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableItem: {fileID: 7950291525162769653}
+  grabbableItem: {fileID: 1473169372143345959}
   triggers:
   - target: 0
     specifiedTargetItem: {fileID: 0}
@@ -734,7 +734,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &3802911470954124512
+--- !u!114 &1171525236963592032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -781,7 +781,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &9216396799130724803
+--- !u!114 &6631500388744009443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -935,7 +935,7 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &7512570694148900674
+--- !u!114 &7390002524635790930
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1083,7 +1083,7 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &8115538052138640634
+--- !u!114 &599274570380203628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1135,7 +1135,7 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &4521619433277861670
+--- !u!114 &6949748797311471751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1187,7 +1187,7 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &8331861020154726798
+--- !u!114 &3876379264607311364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1383,7 +1383,69 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &1650207791092552795
+    - singleStatement:
+        targetState:
+          target: 0
+          key: overheating
+          parameterType: 1
+        expression:
+          type: 1
+          value:
+            type: 1
+            constant:
+              type: 1
+              boolValue: 0
+              floatValue: 0
+              integerValue: 0
+            sourceState:
+              target: 0
+              key: 
+          operatorExpression:
+            operator: 15
+            operands:
+            - type: 0
+              value:
+                type: 1
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: cooled
+              operatorExpression:
+                operator: 0
+                operands: []
+            - type: 0
+              value:
+                type: 0
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: 
+              operatorExpression:
+                operator: 0
+                operands: []
+            - type: 0
+              value:
+                type: 1
+                constant:
+                  type: 1
+                  boolValue: 0
+                  floatValue: 0
+                  integerValue: 0
+                sourceState:
+                  target: 0
+                  key: overheating
+              operatorExpression:
+                operator: 0
+                operands: []
+--- !u!114 &5343452089843603062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

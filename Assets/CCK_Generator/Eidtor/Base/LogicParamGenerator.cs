@@ -39,9 +39,9 @@ namespace Ponta.CCK_Generator.Base
         /* ---------------------------------------------------------------- */
         // Expression
         /* ---------------------------------------------------------------- */
-        public static Expression CreateExpression_ROOMSTATE(GimmickTarget sourceRarget, string sourcekey) {
+        public static Expression CreateExpression_ROOMSTATE(GimmickTarget sourceTarget, string sourcekey) {
 
-            var value = new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(sourceRarget, sourcekey));
+            var value = new ExpressionValue(ValueType.RoomState, new ConstantValue(false), new SourceState(sourceTarget, sourcekey));
             var operatorExpression = new OperatorExpression(Operator.Not, null);
 
             return new Expression(ExpressionType.Value, value, operatorExpression);
@@ -150,6 +150,25 @@ namespace Ponta.CCK_Generator.Base
             return new SingleStatement(target, expression);
         }
 
+        public static SingleStatement CreateSingleStatement_SETVALUE_BY_CONDITION(
+            TargetState target,
+            Expression inExpression_1st,
+            Expression inExpression_2nd,
+            Expression inExpression_3rd) {
+
+            /* Expression */
+            var expression = new Expression(
+                ExpressionType.OperatorExpression,
+                CreateExpressionValue_COMPARE(),
+                CreateOperatorExpression(
+                    Operator.Condition,
+                    inExpression_1st,
+                    inExpression_2nd,
+                    inExpression_3rd));
+
+            return new SingleStatement(target, expression);
+        }
+
         public static List<SingleStatement>  CreateSingleStatementList(params SingleStatement[] args) {
             return new List<SingleStatement>(args);
         }
@@ -198,6 +217,22 @@ namespace Ponta.CCK_Generator.Base
             var operands = new List<Expression>();
             operands.Add(inExpression_1st);
             operands.Add(inExpression_2nd);
+
+            OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
+
+            return operatorExpression;
+        }
+
+        static OperatorExpression CreateOperatorExpression(
+            Operator inOperator,
+            Expression inExpression_1st,
+            Expression inExpression_2nd,
+            Expression inExpression_3rd) {
+
+            var operands = new List<Expression>();
+            operands.Add(inExpression_1st);
+            operands.Add(inExpression_2nd);
+            operands.Add(inExpression_3rd);
 
             OperatorExpression operatorExpression = new OperatorExpression(inOperator, operands);
 
