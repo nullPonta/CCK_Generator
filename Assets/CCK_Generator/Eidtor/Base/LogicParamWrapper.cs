@@ -1,4 +1,5 @@
-﻿using ClusterVR.CreatorKit;
+﻿#if UNITY_EDITOR
+using ClusterVR.CreatorKit;
 using ClusterVR.CreatorKit.Gimmick;
 using ClusterVR.CreatorKit.Operation;
 using UnityEngine;
@@ -182,4 +183,4 @@ namespace Ponta.CCK_Generator.Base {
     }
 
 }
-
+#endif

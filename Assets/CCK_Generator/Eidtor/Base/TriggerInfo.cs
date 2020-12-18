@@ -1,4 +1,5 @@
-﻿using ClusterVR.CreatorKit.Trigger.Implements;
+﻿#if UNITY_EDITOR
+using ClusterVR.CreatorKit.Trigger.Implements;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -95,4 +96,4 @@ namespace Ponta.CCK_Generator.Base
     }
 
 }
-
+#endif

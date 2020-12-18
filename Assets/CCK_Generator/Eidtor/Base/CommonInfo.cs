@@ -1,4 +1,5 @@
-﻿
+﻿#if UNITY_EDITOR
+
 
 namespace Ponta.CCK_Generator.Base
 {
@@ -37,4 +38,4 @@ namespace Ponta.CCK_Generator.Base
     }
 
 }
-
+#endif
