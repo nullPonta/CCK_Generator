@@ -15,7 +15,7 @@ namespace Ponta.CCK_Generator
     public class MachineGunCreator
     {
         [MenuItem("CCK_Generator/Create/MachineGunCreator")]
-        public static void CreateHandGunPrefab() {
+        public static void CreatePrefab() {
 
             IDefinition definition = new MachineGunDefinition();
             definition.CreatePrefabFromPrototype();
