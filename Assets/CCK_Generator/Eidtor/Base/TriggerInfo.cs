@@ -9,6 +9,7 @@ namespace Ponta.CCK_Generator.Base
 
     public class TriggerInfo
     {
+
         List<TriggerParam> OnCreateItemTriggerParamList;
 
         /* Grab */
@@ -18,6 +19,8 @@ namespace Ponta.CCK_Generator.Base
         /* UseItem */
         List<TriggerParam> UseItemTriggerParamList_Down;
         List<TriggerParam> UseItemTriggerParamList_Up;
+
+        List<TriggerParam> OnCollideItemTriggerParamList;
 
 
         public void AddOnCreateItemTrigger(TriggerParam triggerParam) {
@@ -38,6 +41,10 @@ namespace Ponta.CCK_Generator.Base
 
         public void AddUseItemTrigger_Up(TriggerParam triggerParam) {
             AddTriggerParamToList(triggerParam, ref UseItemTriggerParamList_Up);
+        }
+
+        public void AddOnCollideItemTrigger(TriggerParam triggerParam) {
+            AddTriggerParamToList(triggerParam, ref OnCollideItemTriggerParamList);
         }
 
         public void AddTriggerComponent(GameObject gameObject) {
@@ -73,6 +80,12 @@ namespace Ponta.CCK_Generator.Base
                 if (UseItemTriggerParamList_Up != null) {
                     SerializedObjectUtil.SetTriggerValue(useItemTrigger, "upTriggers", UseItemTriggerParamList_Up);
                 }
+            }
+
+            /* OnCollideItemTrigger */
+            if (OnCollideItemTriggerParamList != null) {
+                var onCollideItemTrigger = gameObject.AddComponent<OnCollideItemTrigger>();
+                SerializedObjectUtil.SetTriggerValue(onCollideItemTrigger, "triggers", OnCollideItemTriggerParamList);
             }
 
         }

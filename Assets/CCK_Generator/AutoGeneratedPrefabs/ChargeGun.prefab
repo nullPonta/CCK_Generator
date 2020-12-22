@@ -917,13 +917,13 @@ GameObject:
   - component: {fileID: 6573316322044551450}
   - component: {fileID: 6573316322044551454}
   - component: {fileID: 6573316322044551424}
-  - component: {fileID: 7598725034028058581}
-  - component: {fileID: 8686004202346626191}
-  - component: {fileID: 9157884241726965226}
-  - component: {fileID: 3313386969460890896}
-  - component: {fileID: 285041956803120743}
-  - component: {fileID: 3801110146664361311}
-  - component: {fileID: 3079588466220593250}
+  - component: {fileID: 3978362184109883944}
+  - component: {fileID: 4438739568455442415}
+  - component: {fileID: 2609409822829779972}
+  - component: {fileID: 7662703368193400863}
+  - component: {fileID: 5699730015545288859}
+  - component: {fileID: 9012712811612822185}
+  - component: {fileID: 9062311942126113313}
   m_Layer: 14
   m_Name: ChargeGun
   m_TagString: Untagged
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   itemTemplateId:
     value: 16458776112262414319
   spawnPoint: {fileID: 6573316321399946838}
---- !u!114 &7598725034028058581
+--- !u!114 &3978362184109883944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 6573316322044551425}
   rb: {fileID: 6573316322044551426}
---- !u!114 &8686004202346626191
+--- !u!114 &4438739568455442415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1077,9 +1077,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce108e3354c62c345a1cbcdf1f965e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movableItem: {fileID: 7598725034028058581}
+  movableItem: {fileID: 3978362184109883944}
   grip: {fileID: 6573316322005889133}
---- !u!114 &9157884241726965226
+--- !u!114 &2609409822829779972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaad96d2e18f43efbdaeaf6edf336ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableItem: {fileID: 8686004202346626191}
+  grabbableItem: {fileID: 4438739568455442415}
   triggers:
   - target: 0
     specifiedTargetItem: {fileID: 0}
@@ -1101,7 +1101,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &3313386969460890896
+--- !u!114 &7662703368193400863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a235adcd912f4bbb9b5397586de7af9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableItem: {fileID: 8686004202346626191}
+  grabbableItem: {fileID: 4438739568455442415}
   triggers:
   - target: 0
     specifiedTargetItem: {fileID: 0}
@@ -1123,7 +1123,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &285041956803120743
+--- !u!114 &5699730015545288859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1186,7 +1186,7 @@ MonoBehaviour:
       boolValue: 0
       floatValue: 0
       integerValue: 0
---- !u!114 &3801110146664361311
+--- !u!114 &9012712811612822185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1306,7 +1306,7 @@ MonoBehaviour:
               operatorExpression:
                 operator: 0
                 operands: []
---- !u!114 &3079588466220593250
+--- !u!114 &9062311942126113313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

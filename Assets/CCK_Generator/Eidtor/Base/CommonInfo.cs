@@ -1,4 +1,6 @@
 ﻿#if UNITY_EDITOR
+using UnityEngine;
+using UnityEngine.Events;
 
 
 namespace Ponta.CCK_Generator.Base
@@ -15,6 +17,8 @@ namespace Ponta.CCK_Generator.Base
 
         public LogicInfo logicInfo = new LogicInfo();
 
+        public UnityAction<GameObject> OnCreate;
+
 
         public void CreatePrefabFromPrototype() {
 
@@ -22,6 +26,8 @@ namespace Ponta.CCK_Generator.Base
 
             var result = gameObjectCreator.Init(prefabsPathController);
             if (!result) { return; }
+
+            gameObjectCreator.OnCreate = OnCreate;
 
             AddComponent(gameObjectCreator);
             gameObjectCreator.SaveAsPrefabAsset();

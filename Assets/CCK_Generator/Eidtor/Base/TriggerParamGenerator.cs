@@ -15,7 +15,7 @@ namespace Ponta.CCK_Generator.Base
         /* ---------------------------------------------------------------- */
         public static TriggerParam CreateSignal(TriggerTarget target, Item specifiedTargetItem, string key) {
             var value = new TriggerValue();
-            var param = new TriggerParam(TriggerTarget.Item, null, key, ParameterType.Signal, value);
+            var param = new TriggerParam(target, null, key, ParameterType.Signal, value);
 
             return param;
         }
@@ -24,7 +24,7 @@ namespace Ponta.CCK_Generator.Base
             var value = new TriggerValue();
             value.BoolValue = boolValue;
 
-            var param = new TriggerParam(TriggerTarget.Item, null, key, ParameterType.Bool, value);
+            var param = new TriggerParam(target, null, key, ParameterType.Bool, value);
 
             return param;
         }
@@ -33,7 +33,7 @@ namespace Ponta.CCK_Generator.Base
             var value = new TriggerValue();
             value.FloatValue = floatValue;
 
-            var param = new TriggerParam(TriggerTarget.Item, null, key, ParameterType.Float, value);
+            var param = new TriggerParam(target, null, key, ParameterType.Float, value);
 
             return param;
         }
@@ -42,7 +42,7 @@ namespace Ponta.CCK_Generator.Base
             var value = new TriggerValue();
             value.IntegerValue = intValue;
 
-            var param = new TriggerParam(TriggerTarget.Item, null, key, ParameterType.Integer, value);
+            var param = new TriggerParam(target, null, key, ParameterType.Integer, value);
 
             return param;
         }

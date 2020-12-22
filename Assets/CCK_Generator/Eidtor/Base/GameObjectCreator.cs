@@ -2,19 +2,22 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 namespace Ponta.CCK_Generator.Base
 {
     public class GameObjectCreator
     {
-        PrefabsPathController definition;
+        PrefabsPathController prefabsPathController;
         GameObject gameObject;
+
+        public UnityAction<GameObject> OnCreate;
 
 
         public bool Init(PrefabsPathController definition) {
 
-            this.definition = definition;
+            this.prefabsPathController = definition;
 
             /* GameObject */
             if (definition.GetPrototypePath() != null) {
@@ -34,16 +37,20 @@ namespace Ponta.CCK_Generator.Base
 
         public void SaveAsPrefabAsset() {
 
+            if (OnCreate != null) {
+                OnCreate(gameObject);
+            }
+
             /* Save prefab */
             bool success;
-            PrefabUtility.SaveAsPrefabAsset(gameObject, definition.GetOutputPath(), out success);
+            PrefabUtility.SaveAsPrefabAsset(gameObject, prefabsPathController.GetOutputPath(), out success);
 
             if (!success) {
-                Debug.LogError("SaveAsPrefabAsset failed ! : " + definition.GetOutputPath());
+                Debug.LogError("SaveAsPrefabAsset failed ! : " + prefabsPathController.GetOutputPath());
             }
 
             /* Clean up gameObject */
-            if (definition.GetPrototypePath() != null) {
+            if (prefabsPathController.GetPrototypePath() != null) {
                 PrefabUtility.UnloadPrefabContents(gameObject);
             }
             else {
@@ -66,7 +73,7 @@ namespace Ponta.CCK_Generator.Base
         GameObject LoadPrototypePrefab() {
 
             /* Check file name */
-            string fileName = System.IO.Path.GetFileName(definition.GetPrototypePath());
+            string fileName = System.IO.Path.GetFileName(prefabsPathController.GetPrototypePath());
 
             if (!fileName.StartsWith("Prototype_")) {
                 Debug.LogError("Prototype fileName error ! Required [Prototype_XXX] : " + fileName);
@@ -75,11 +82,11 @@ namespace Ponta.CCK_Generator.Base
 
             /* Load prefab */
             try {
-                gameObject = PrefabUtility.LoadPrefabContents(definition.GetPrototypePath());
+                gameObject = PrefabUtility.LoadPrefabContents(prefabsPathController.GetPrototypePath());
                 return gameObject;
             }
             catch (Exception e) {
-                Debug.LogError("LoadPrefabContents failed ! : " + definition.GetPrototypePath() + " : " + e.Message);
+                Debug.LogError("LoadPrefabContents failed ! : " + prefabsPathController.GetPrototypePath() + " : " + e.Message);
                 return null;
             }
         }
